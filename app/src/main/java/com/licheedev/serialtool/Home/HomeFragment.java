@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private HomeAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    String ApiGet= "http://117.0.22.171/product/get_notice_board";
+    String ApiGet= "http://ssmes.autonsi.com//product/get_notice_board";
     FloatingActionButton fab;
     String kiemtra;
     EditText editText;
@@ -175,13 +175,13 @@ public class HomeFragment extends Fragment {
                 if(Title.length()>0 && Context.length()>0) {
                     switch (kiemtra) {
                         case "A":
-                            String apiAdd = "http://117.0.22.171/product/get_notice_board_create?title=" + Title + "&content=" + str + "&reg_id=" + userlogin + "&div_cd=A";
+                            String apiAdd = "http://ssmes.autonsi.com//product/get_notice_board_create?title=" + Title + "&content=" + str + "&reg_id=" + userlogin + "&div_cd=A";
                             new PostNoticeJson().execute(apiAdd);
                             xulyPIvision();
                             dialog.dismiss();
                             break;
                         case "M":
-                            new PostNoticeJson().execute("http://117.0.22.171/product/get_notice_board_create?title=" + Title + "&content=" + str + "&reg_id=" + userlogin + "&div_cd=M");
+                            new PostNoticeJson().execute("http://ssmes.autonsi.com//product/get_notice_board_create?title=" + Title + "&content=" + str + "&reg_id=" + userlogin + "&div_cd=M");
                             xulyPIvision();
                             dialog.dismiss();
                             break;
@@ -401,7 +401,7 @@ public class HomeFragment extends Fragment {
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                String apiDelete = "http://117.0.22.171/product/get_notice_board_delete?mno=" + finalMno;
+                String apiDelete = "http://ssmes.autonsi.com//product/get_notice_board_delete?mno=" + finalMno;
                 new PostNoticeJson().execute(apiDelete);
                 xulyPIvision();
                 editText.setText("");

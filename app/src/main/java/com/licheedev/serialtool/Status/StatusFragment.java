@@ -137,8 +137,8 @@ public class StatusFragment extends Fragment implements SearchView.OnQueryTextLi
     }
 
     private void LoadData() {
-        new ReadJSON().execute("http://117.0.22.171/DashBoardQC/Get_DataFactoryStatus_API");
-        Log.d("Read data", "http://117.0.22.171/DashBoardQC/Get_DataFactoryStatus_API");
+        new ReadJSON().execute("http://ssmes.autonsi.com//DashBoardQC/Get_DataFactoryStatus_API");
+        Log.d("Read data", "http://ssmes.autonsi.com//DashBoardQC/Get_DataFactoryStatus_API");
 
     }
 
@@ -288,11 +288,11 @@ public class StatusFragment extends Fragment implements SearchView.OnQueryTextLi
                 } else {
 
 
-                    new readJsonSave().execute("http://117.0.22.171/DashBoardQC/UpdateStatus_API?prounit_cd=" + statusMasters.get(position).getProunit_cd() +
+                    new readJsonSave().execute("http://ssmes.autonsi.com//DashBoardQC/UpdateStatus_API?prounit_cd=" + statusMasters.get(position).getProunit_cd() +
                             "&process_sts_cd=" +
                             StatusListid.get(vitrispchon));
 
-                    Log.d("readJsonSave", "http://117.0.22.171/DashBoardQC/UpdateStatus_API?prounit_cd=" + statusMasters.get(position).getProunit_cd() +
+                    Log.d("readJsonSave", "http://ssmes.autonsi.com//DashBoardQC/UpdateStatus_API?prounit_cd=" + statusMasters.get(position).getProunit_cd() +
                             "&process_sts_cd=" +
                             StatusListid.get(vitrispchon));
                     dialog.dismiss();
@@ -302,8 +302,8 @@ public class StatusFragment extends Fragment implements SearchView.OnQueryTextLi
             }
         });
 
-        new getDataSpiner().execute("http://117.0.22.171/DashBoardQC/Getstatus_API");
-        Log.d("dataSpinner", "http://117.0.22.171/DashBoardQC/Getstatus_API");
+        new getDataSpiner().execute("http://ssmes.autonsi.com//DashBoardQC/Getstatus_API");
+        Log.d("dataSpinner", "http://ssmes.autonsi.com//DashBoardQC/Getstatus_API");
         dialog.show();
     }
 

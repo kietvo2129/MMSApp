@@ -73,7 +73,7 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private void getData() {
-        new ReadJSON().execute("http://117.0.22.171/product/get_list_day_schedule?fo_no=" +
+        new ReadJSON().execute("http://ssmes.autonsi.com//product/get_list_day_schedule?fo_no=" +
                 WOchon +
                 "&line_no=" +
                 Linechon +
@@ -81,7 +81,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 process_nochon +
                 "&process_nm=" +
                 processnamechon);
-        Log.d("ReadJSON", "http://117.0.22.171/product/get_list_day_schedule?fo_no=" +
+        Log.d("ReadJSON", "http://ssmes.autonsi.com//product/get_list_day_schedule?fo_no=" +
                 WOchon +
                 "&line_no=" +
                 Linechon +
@@ -178,11 +178,11 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                new JsonUpdate().execute("http://117.0.22.171/product/Update_Schedule_qty?olddno="
+                new JsonUpdate().execute("http://ssmes.autonsi.com//product/Update_Schedule_qty?olddno="
                         + mHomeList.get(position).getHomemno() +
                         "&schedule=" +
                         input.getText().toString().trim());
-                Log.d("JsonUpdate", "http://117.0.22.171/product/Update_Schedule_qty?olddno="
+                Log.d("JsonUpdate", "http://ssmes.autonsi.com//product/Update_Schedule_qty?olddno="
                         + mHomeList.get(position).getHomemno() +
                         "&schedule=" +
                         input.getText().toString().trim());

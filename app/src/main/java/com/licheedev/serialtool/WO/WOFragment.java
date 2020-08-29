@@ -76,7 +76,7 @@ public class WOFragment extends Fragment {
     PlanMasterAdaptor planMasterAdaptor;
     SharedPreferences sharedPreferences;
 
-    String API_GET_Work_Order_Master = "http://117.0.22.171/product/post_m_order_facline_info";
+    String API_GET_Work_Order_Master = "http://ssmes.autonsi.com//product/post_m_order_facline_info";
 
     @Nullable
     @Override
@@ -274,7 +274,7 @@ public class WOFragment extends Fragment {
 
         lvplan = dialog.findViewById(R.id.lvplan);
 
-        new ReadJSONplan().execute("http://117.0.22.171/product/info?fo_no=" +
+        new ReadJSONplan().execute("http://ssmes.autonsi.com//product/info?fo_no=" +
                 wono +
                 "&line_no=" +
                 lineno);
@@ -360,15 +360,15 @@ public class WOFragment extends Fragment {
 
 
         // Toast.makeText(this, ""+ wono + lineno, Toast.LENGTH_SHORT).show();
-        new ReadJSONcheckstanby().execute("http://117.0.22.171/product/checkstandby?fo_no=" +
+        new ReadJSONcheckstanby().execute("http://ssmes.autonsi.com//product/checkstandby?fo_no=" +
                 wono +
                 "&line_no=" +
                 lineno);
 
-        // Log.d("AAA","http://117.0.22.171/product/GetCheckYN?fo_no=" + wono + "&line_no=" + lineno+ "&process_no=" + planslickProcess + "&olddno=" + OldNoslick + "&work_dt=" + Dateslick);
-        //Toast.makeText(this, ""+ "http://117.0.22.171/product/checkstandby?fo_no=" + wono + "&line_no=" + lineno+ "&process_no=" + planslickProcess + "&old_no=" + OldNoslick + "&work_dt=" + Dateslick, Toast.LENGTH_SHORT).show();
+        // Log.d("AAA","http://ssmes.autonsi.com//product/GetCheckYN?fo_no=" + wono + "&line_no=" + lineno+ "&process_no=" + planslickProcess + "&olddno=" + OldNoslick + "&work_dt=" + Dateslick);
+        //Toast.makeText(this, ""+ "http://ssmes.autonsi.com//product/checkstandby?fo_no=" + wono + "&line_no=" + lineno+ "&process_no=" + planslickProcess + "&old_no=" + OldNoslick + "&work_dt=" + Dateslick, Toast.LENGTH_SHORT).show();
 
-        new ReadJSONcheckYESNOTYES().execute("http://117.0.22.171/product/GetCheckYN?fo_no=" + wono + "&line_no=" + lineno +
+        new ReadJSONcheckYESNOTYES().execute("http://ssmes.autonsi.com//product/GetCheckYN?fo_no=" + wono + "&line_no=" + lineno +
                 "&process_no=" + planslickProcess + "&olddno=" + OldNoslick + "&work_dt=" + Dateslick);
         dialog.show();
     }
@@ -394,7 +394,7 @@ public class WOFragment extends Fragment {
             staff_chon = "Y";
         }
 
-        new ReadJSONcheck_stand_by_Save().execute("http://117.0.22.171/product/updateCheckYN?material_check_yn=" + meterial_chon + "&machine_check_yn=" + tools_chon + "&staff_check_yn=" + staff_chon + "&olddno=" + OldNoslick);
+        new ReadJSONcheck_stand_by_Save().execute("http://ssmes.autonsi.com//product/updateCheckYN?material_check_yn=" + meterial_chon + "&machine_check_yn=" + tools_chon + "&staff_check_yn=" + staff_chon + "&olddno=" + OldNoslick);
 
     }
 

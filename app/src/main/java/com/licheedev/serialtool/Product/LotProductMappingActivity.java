@@ -3,6 +3,7 @@ package com.licheedev.serialtool.Product;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -20,6 +21,8 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.licheedev.serialtool.Actual.ActualFragment;
+import com.licheedev.serialtool.Actual.CuttingPackingActivity;
+import com.licheedev.serialtool.Actual.LotProductActivity;
 import com.licheedev.serialtool.R;
 
 import org.json.JSONArray;
@@ -33,16 +36,18 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class LotProductMappingActivity extends AppCompatActivity {
-    TextView tv_LotCode, tv_bobbinCode,tv_MTbobbin ;
-    String LotCode;
+    TextView tv_LotCode, tv_bobbinCode, tv_MTbobbin;
+   public static String LotCode;
     ImageView btn_scan_BobbinCode;
-    String bom_no, ProcessChon,level;
+    String bom_no, ProcessChon, level;
     ArrayList<LotCompositeMaster> lotCompositeMasterArrayList;
     LotCompositeMasterAdaptor lotCompositeMasterAdaptor;
     ListView lvDanhSanhproduct;
-    TextView buttonSave,buttonFinish,buttonDelete;
+    TextView buttonSave, buttonFinish, buttonDelete, buttonCuttingpacking;
     String MaterialCode;
     int idchon = -1;
+
+    int numQty = 0;
 
 
     @Override
@@ -50,6 +55,7 @@ public class LotProductMappingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lot_composite_mapping);
         setTitle("Lot Product Mapping");
+
         tv_LotCode = findViewById(R.id.tv_lotCode);
         btn_scan_BobbinCode = findViewById(R.id.btn_scan_BobbinCode);
         tv_bobbinCode = findViewById(R.id.tv_bobbinCode);
@@ -57,11 +63,16 @@ public class LotProductMappingActivity extends AppCompatActivity {
         buttonSave = findViewById(R.id.buttonSave);
         buttonFinish = findViewById(R.id.buttonFinish);
         buttonDelete = findViewById(R.id.buttonDelete);
-        tv_MTbobbin =  findViewById(R.id.tv_MTbobbin);
-
+        tv_MTbobbin = findViewById(R.id.tv_MTbobbin);
+        buttonCuttingpacking = findViewById(R.id.buttonCuttingpacking);
 
         Intent intent = getIntent();
         LotCode = intent.getStringExtra("mt_qrcode");
+        numQty = Integer.parseInt(intent.getStringExtra("numQty"));
+
+        if (numQty>0){
+            buttonCuttingpacking.setBackgroundColor(Color.parseColor("#959393"));
+        }
         tv_LotCode.setText(LotCode);
         btn_scan_BobbinCode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +98,16 @@ public class LotProductMappingActivity extends AppCompatActivity {
         ProcessChon = ActualFragment.processchon;
         level = ActualFragment.level;
         Loaddata();
+        buttonCuttingpacking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (numQty>0){
+                    return;
+                }
+                Intent intent = new Intent(LotProductMappingActivity.this, CuttingPackingActivity.class);
+                startActivity(intent);
+            }
+        });
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,18 +120,18 @@ public class LotProductMappingActivity extends AppCompatActivity {
                     AlertNotExist("Insert Material Code or MT Bobbin");
 
                 } else {
-//                    new docJSONSaveMaterial().execute("http://117.0.22.171/Lot/insertw_material_mping_api?mt_cd=" +
+//                    new docJSONSaveMaterial().execute("http://ssmes.autonsi.com//Lot/insertw_material_mping_api?mt_cd=" +
 //                            LotCode +
 //                            "&qr_code=" +
 //                            MaterialCode+ "&bom_no=" + bom_no + "&prounit_cd=" + ProcessChon+ "&level=" + level);
-//                    Log.d("SaveMaterial", "http://117.0.22.171/Lot/insertw_material_mping_api?mt_cd=" +
+//                    Log.d("SaveMaterial", "http://ssmes.autonsi.com//Lot/insertw_material_mping_api?mt_cd=" +
 //                            LotCode + "&qr_code=" + MaterialCode + "&bom_no=" + bom_no + "&prounit_cd=" + ProcessChon+ "&level=" + level);
-                    new docJSONSaveMaterial().execute("http://117.0.22.171/Lot/insertw_material_mping_api?mt_cd=" +
+                    new docJSONSaveMaterial().execute("http://ssmes.autonsi.com//Lot/insertw_material_mping_api?mt_cd=" +
                             LotCode +
                             "&qr_code=" +
-                            MaterialCode + "&bb_no="+ MTbb_no + "&bom_no=" + bom_no + "&prounit_cd=" + ProcessChon+ "&level=" + level);
-                    Log.d("SaveMaterial", "http://117.0.22.171/Lot/insertw_material_mping_api?mt_cd=" +
-                            LotCode + "&qr_code=" + MaterialCode +  "&bb_no="+ MTbb_no + "&bom_no=" + bom_no + "&prounit_cd=" + ProcessChon+ "&level=" + level);
+                            MaterialCode + "&bb_no=" + MTbb_no + "&bom_no=" + bom_no + "&prounit_cd=" + ProcessChon + "&level=" + level);
+                    Log.d("SaveMaterial", "http://ssmes.autonsi.com//Lot/insertw_material_mping_api?mt_cd=" +
+                            LotCode + "&qr_code=" + MaterialCode + "&bb_no=" + MTbb_no + "&bom_no=" + bom_no + "&prounit_cd=" + ProcessChon + "&level=" + level);
                 }
 
             }
@@ -119,12 +140,12 @@ public class LotProductMappingActivity extends AppCompatActivity {
         buttonFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (idchon == -1){
+                if (idchon == -1) {
                     Toast.makeText(LotProductMappingActivity.this, "No lines have been selected yet", Toast.LENGTH_SHORT).show();
-                }else {
-                    if (lotCompositeMasterArrayList.get(idchon).getUse_yn().equals("Y")){
-                        new docJSONfinish().execute("http://117.0.22.171/Lot/chane_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid()+ "&level=" + level);
-                        Log.d("Finsish","http://117.0.22.171/Lot/chane_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid()+ "&level=" + level);
+                } else {
+                    if (lotCompositeMasterArrayList.get(idchon).getUse_yn().equals("Y")) {
+                        new docJSONfinish().execute("http://ssmes.autonsi.com//Lot/chane_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid() + "&level=" + level);
+                        Log.d("Finsish", "http://ssmes.autonsi.com//Lot/chane_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid() + "&level=" + level);
                     }
                 }
             }
@@ -132,12 +153,12 @@ public class LotProductMappingActivity extends AppCompatActivity {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (idchon == -1){
+                if (idchon == -1) {
                     Toast.makeText(LotProductMappingActivity.this, "No lines have been selected yet", Toast.LENGTH_SHORT).show();
-                }else {
-                    if (lotCompositeMasterArrayList.get(idchon).getUse_yn().equals("Y")||lotCompositeMasterArrayList.get(idchon).getUse_yn().equals("N")){
-                        new docJSONfinish().execute("http://117.0.22.171/Lot/Delete_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid()+ "&level=" + level);
-                        Log.d("delect","http://117.0.22.171/Lot/Delete_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid()+ "&level=" + level);
+                } else {
+                    if (lotCompositeMasterArrayList.get(idchon).getUse_yn().equals("Y") || lotCompositeMasterArrayList.get(idchon).getUse_yn().equals("N")) {
+                        new docJSONfinish().execute("http://ssmes.autonsi.com//Lot/Delete_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid() + "&level=" + level);
+                        Log.d("delect", "http://ssmes.autonsi.com//Lot/Delete_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid() + "&level=" + level);
                     }
                 }
             }
@@ -152,14 +173,14 @@ public class LotProductMappingActivity extends AppCompatActivity {
         });
     }
 
-    private void Loaddata(){
-        new docJSONmapping().execute("http://117.0.22.171/lot/ds_mapping_w_api?mt_lot=" +
+    private void Loaddata() {
+        new docJSONmapping().execute("http://ssmes.autonsi.com//lot/ds_mapping_w_api?mt_lot=" +
                 LotCode +
                 "&bom_no=" +
                 bom_no +
                 "&prounit_cd=" +
-                ProcessChon+"&level=" + level);
-        Log.d("Mapping", "http://117.0.22.171/lot/ds_mapping_w_api?mt_lot=" +
+                ProcessChon + "&level=" + level);
+        Log.d("Mapping", "http://ssmes.autonsi.com//lot/ds_mapping_w_api?mt_lot=" +
                 LotCode +
                 "&bom_no=" +
                 bom_no +
@@ -185,10 +206,10 @@ public class LotProductMappingActivity extends AppCompatActivity {
                 if (key_location == "tv_bobbinCode") {
                     String bbCode = input.getText().toString();
                     tv_bobbinCode.setText(bbCode);
-                }else if (key_location == "tv_MTbobbin"){
+                } else if (key_location == "tv_MTbobbin") {
                     String bbCode = input.getText().toString();
                     tv_MTbobbin.setText(bbCode);
-                }  else {
+                } else {
                 }
                 dialog.dismiss();
             }
@@ -306,7 +327,7 @@ public class LotProductMappingActivity extends AppCompatActivity {
 
 
                     //Toast.makeText(LotProductMappingActivity.this, TL2, Toast.LENGTH_SHORT).show();
-                }else if(TL.equals("true")){
+                } else if (TL.equals("true")) {
                     Toast.makeText(LotProductMappingActivity.this, "Done!", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
@@ -315,7 +336,6 @@ public class LotProductMappingActivity extends AppCompatActivity {
             Loaddata();
         }
     }
-
 
 
     class docJSONfinish extends AsyncTask<String, Integer, String> {
@@ -333,9 +353,9 @@ public class LotProductMappingActivity extends AppCompatActivity {
                 String TL = jsonObject.getString("result");
                 if (TL.equals("false")) {
                     Toast.makeText(LotProductMappingActivity.this, "Data server incorrect!!!", Toast.LENGTH_SHORT).show();
-                } else if(TL.equals("true")){
+                } else if (TL.equals("true")) {
                     Toast.makeText(LotProductMappingActivity.this, "Done!!!", Toast.LENGTH_SHORT).show();
-                }else if(TL.equals("Dont")){
+                } else if (TL.equals("Dont")) {
                     Toast.makeText(LotProductMappingActivity.this, "Data don't exists!!!", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {

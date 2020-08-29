@@ -247,7 +247,7 @@ public class ActualFragment extends Fragment {
                 fragmentTransaction.replace(R.id.framContent, fragmentKeyin);
                 fragmentTransaction.commit();
                 //DuLieuWO();
-                new docJSONdata2().execute("http://117.0.22.171/product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
+                new docJSONdata2().execute("http://ssmes.autonsi.com//product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
             }
         });
 
@@ -261,7 +261,7 @@ public class ActualFragment extends Fragment {
                 fragmentTransaction.replace(R.id.framContent, fragmentScan);
                 fragmentTransaction.commit();
                 //DuLieuWO();
-                new docJSONdata2().execute("http://117.0.22.171/product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
+                new docJSONdata2().execute("http://ssmes.autonsi.com//product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
 
             }
         });
@@ -348,7 +348,7 @@ public class ActualFragment extends Fragment {
                                         numActual = numActual + 1;
                                         fragmentScan.tvActualNum.setText(numActual + "");
                                         fragmentScan.scanactual.setText(readMessage.substring(8, in).trim());
-                                        new docJSONbarcode().execute("http://117.0.22.171/product/post_barcode_m_order_facline_dayhist?fo_no=" +
+                                        new docJSONbarcode().execute("http://ssmes.autonsi.com//product/post_barcode_m_order_facline_dayhist?fo_no=" +
                                                 WOchon +
                                                 "&line_no=" +
                                                 Linechon +
@@ -372,7 +372,7 @@ public class ActualFragment extends Fragment {
                                         numDefect = numDefect + 1;
                                         fragmentScan.tvDefectiveNum.setText(numDefect + "");
                                         fragmentScan.scandefective.setText(readMessage.substring(8, in).trim());
-                                        new docJSONbarcode().execute("http://117.0.22.171/product/post_barcode_m_order_facline_dayhist?fo_no=" +
+                                        new docJSONbarcode().execute("http://ssmes.autonsi.com//product/post_barcode_m_order_facline_dayhist?fo_no=" +
                                                 WOchon +
                                                 "&line_no=" +
                                                 Linechon +
@@ -465,8 +465,8 @@ public class ActualFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                new docJSONdataAgain().execute("http://117.0.22.171/product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
-                Log.d("docJSONdataAgain", "http://117.0.22.171/product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
+                new docJSONdataAgain().execute("http://ssmes.autonsi.com//product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
+                Log.d("docJSONdataAgain", "http://ssmes.autonsi.com//product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
 
 
 
@@ -507,7 +507,7 @@ public class ActualFragment extends Fragment {
                     fragmentKeyin.setArguments(bundle);
                 }
 
-                new getQC_code().execute("http://117.0.22.171/Lot/get_QC?level=" +
+                new getQC_code().execute("http://ssmes.autonsi.com//Lot/get_QC?level=" +
                         level +
                         "&process_no=" +
                         processchon +
@@ -516,7 +516,7 @@ public class ActualFragment extends Fragment {
                         "&style_no=" +
                         style_no);
 
-                Log.d("getQC_code","http://117.0.22.171/Lot/get_QC?level=" +
+                Log.d("getQC_code","http://ssmes.autonsi.com//Lot/get_QC?level=" +
                         level +
                         "&process_no=" +
                         processchon +
@@ -792,8 +792,8 @@ public class ActualFragment extends Fragment {
 
     private void DuLieuWO() {
 
-        new docJSONwo().execute("http://117.0.22.171/product/get_fo_no_m_order_facline_day");
-        Log.d("docJSONwo", "http://117.0.22.171/product/get_fo_no_m_order_facline_day");
+        new docJSONwo().execute("http://ssmes.autonsi.com//product/get_fo_no_m_order_facline_day");
+        Log.d("docJSONwo", "http://ssmes.autonsi.com//product/get_fo_no_m_order_facline_day");
 
 
     }
@@ -1131,10 +1131,10 @@ public class ActualFragment extends Fragment {
 
 
                 WOchon = line;
-                new docJSONline().execute("http://117.0.22.171/product/get_line_no_m_order_facline_day?fo_no=" + WOchon);
-                new docJSONdata_them().execute("http://117.0.22.171/Lot/return_mp_mt_line?wo=" + WOchon);
-                Log.d("docJSONline", "http://117.0.22.171/product/get_line_no_m_order_facline_day?fo_no=" + WOchon);
-                Log.d("docJSONdata_them", "http://117.0.22.171/Lot/return_mp_mt_line?wo=" + WOchon);
+                new docJSONline().execute("http://ssmes.autonsi.com//product/get_line_no_m_order_facline_day?fo_no=" + WOchon);
+                new docJSONdata_them().execute("http://ssmes.autonsi.com//Lot/return_mp_mt_line?wo=" + WOchon);
+                Log.d("docJSONline", "http://ssmes.autonsi.com//product/get_line_no_m_order_facline_day?fo_no=" + WOchon);
+                Log.d("docJSONdata_them", "http://ssmes.autonsi.com//Lot/return_mp_mt_line?wo=" + WOchon);
             }
 
             @Override
@@ -1178,9 +1178,9 @@ public class ActualFragment extends Fragment {
                 line = arrayLineLine.get(position);
                 Linechon = line;
 
-                new docJSONpro().execute("http://117.0.22.171/product/get_process_nm_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon);
+                new docJSONpro().execute("http://ssmes.autonsi.com//product/get_process_nm_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon);
 
-                Log.d("docJSONpro","http://117.0.22.171/product/get_process_nm_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon);
+                Log.d("docJSONpro","http://ssmes.autonsi.com//product/get_process_nm_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon);
             }
 
             @Override
@@ -1201,9 +1201,9 @@ public class ActualFragment extends Fragment {
                 processchon = arrayLineNO.get(position);
                 //processnamechon = arrayLinePro.get(position);
 
-                new docJSONdata().execute("http://117.0.22.171/product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
+                new docJSONdata().execute("http://ssmes.autonsi.com//product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
 
-                Log.d("Actual_All", "http://117.0.22.171/product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
+                Log.d("Actual_All", "http://ssmes.autonsi.com//product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
 
 
             }
@@ -1453,8 +1453,8 @@ public class ActualFragment extends Fragment {
     }
 
     private void LoadData_mold_working() {
-        new Data_Mold_working().execute("http://117.0.22.171/product/Getprocess_moldunit_API?process_nm=" + processnamechon+"&fo_no="+WOchon);
-        Log.d("Data_Mold_working", "http://117.0.22.171/product/Getprocess_moldunit_API?process_nm=" + processnamechon+"&fo_no="+WOchon);
+        new Data_Mold_working().execute("http://ssmes.autonsi.com//product/Getprocess_moldunit_API?process_nm=" + processnamechon+"&fo_no="+WOchon);
+        Log.d("Data_Mold_working", "http://ssmes.autonsi.com//product/Getprocess_moldunit_API?process_nm=" + processnamechon+"&fo_no="+WOchon);
     }
 
     class Data_Mold_working extends AsyncTask<String, Integer, String> {
@@ -1565,11 +1565,11 @@ public class ActualFragment extends Fragment {
                 } else {
 
                     vitriMold = vitriLV[0];
-                    url_mode_yes = "http://117.0.22.171/product/Createmold_unit_api?process_nm=" +
+                    url_mode_yes = "http://ssmes.autonsi.com//product/Createmold_unit_api?process_nm=" +
                             processnamechon  + "&md_no=" + MoldAllMasters.get(vitriMold).getStaffId() + "&remark=" + ""+"&fo_no="+WOchon;
-                    new Add_Mold_working().execute("http://117.0.22.171/product/Createmold_unit_api?process_nm=" +
+                    new Add_Mold_working().execute("http://ssmes.autonsi.com//product/Createmold_unit_api?process_nm=" +
                             processnamechon  + "&md_no=" + MoldAllMasters.get(vitriMold).getStaffId() + "&remark=" + ""+"&fo_no="+WOchon);
-                    Log.d("Add_Mold_working", "http://117.0.22.171/product/Createmold_unit_api?process_nm=" +
+                    Log.d("Add_Mold_working", "http://ssmes.autonsi.com//product/Createmold_unit_api?process_nm=" +
                             processnamechon + "&md_no=" + MoldAllMasters.get(vitriMold).getStaffId() + "&remark=" + ""+"&fo_no="+WOchon);
 
                 }
@@ -1626,8 +1626,8 @@ public class ActualFragment extends Fragment {
 
     private void Data_mold_working_All() {
 
-        new Data_mold_working_All().execute("http://117.0.22.171/product/MoldMgtData_api");
-        Log.d("Data_mold_working_All", "http://117.0.22.171/product/MoldMgtData_api");
+        new Data_mold_working_All().execute("http://ssmes.autonsi.com//product/MoldMgtData_api");
+        Log.d("Data_mold_working_All", "http://ssmes.autonsi.com//product/MoldMgtData_api");
     }
 
     class Data_mold_working_All extends AsyncTask<String, Integer, String> {
@@ -1782,8 +1782,8 @@ public class ActualFragment extends Fragment {
 
     private void LoadData_machine_working() {
 
-        new Data_Machine_working().execute("http://117.0.22.171/product/Getprocess_machineunit_api?prounit_cd=" + processnamechon+"&fo_no="+WOchon);
-        Log.d("Data_Machine_working", "http://117.0.22.171/product/Getprocess_machineunit_api?prounit_cd=" + processnamechon+"&fo_no="+WOchon);
+        new Data_Machine_working().execute("http://ssmes.autonsi.com//product/Getprocess_machineunit_api?prounit_cd=" + processnamechon+"&fo_no="+WOchon);
+        Log.d("Data_Machine_working", "http://ssmes.autonsi.com//product/Getprocess_machineunit_api?prounit_cd=" + processnamechon+"&fo_no="+WOchon);
     }
 
     class Data_Machine_working extends AsyncTask<String, Integer, String> {
@@ -1895,11 +1895,11 @@ public class ActualFragment extends Fragment {
 
                     vitriMC = vitriLV[0];
 
-                    url_mc_yes = "http://117.0.22.171/product/Createprocessmachine_unit_API?prounit_cd=" +
+                    url_mc_yes = "http://ssmes.autonsi.com//product/Createprocessmachine_unit_API?prounit_cd=" +
                             processnamechon + "&mc_type=" + MCAllMasters.get(vitriMC).getStt() + "&mc_no=" + MCAllMasters.get(vitriMC).getStaffId() + "&remark=" + ""+"&fo_no="+WOchon;
-                    new Add_MC_working().execute("http://117.0.22.171/product/Createprocessmachine_unit_API?prounit_cd=" +
+                    new Add_MC_working().execute("http://ssmes.autonsi.com//product/Createprocessmachine_unit_API?prounit_cd=" +
                             processnamechon + "&mc_type=" + MCAllMasters.get(vitriMC).getStt() + "&mc_no=" + MCAllMasters.get(vitriMC).getStaffId() + "&remark=" + ""+"&fo_no="+WOchon);
-                    Log.d("Add_MC_working", "http://117.0.22.171/product/Createprocessmachine_unit_API?prounit_cd=" +
+                    Log.d("Add_MC_working", "http://ssmes.autonsi.com//product/Createprocessmachine_unit_API?prounit_cd=" +
                             processnamechon + "&mc_type=" + MCAllMasters.get(vitriMC).getStt() + "&mc_no=" + MCAllMasters.get(vitriMC).getStaffId() + "&remark=" + ""+"&fo_no="+WOchon);
 
                 }
@@ -1955,8 +1955,8 @@ public class ActualFragment extends Fragment {
     }
 
     private void Data_MC_working_All() {
-        new Data_MC_working_All().execute("http://117.0.22.171/product/Getmachine_api");
-        Log.d("Data_MC_working_All", "http://117.0.22.171/product/Getmachine_api");
+        new Data_MC_working_All().execute("http://ssmes.autonsi.com//product/Getmachine_api");
+        Log.d("Data_MC_working_All", "http://ssmes.autonsi.com//product/Getmachine_api");
     }
 
     class Data_MC_working_All extends AsyncTask<String, Integer, String> {
@@ -2114,26 +2114,26 @@ public class ActualFragment extends Fragment {
     private void add_mode_working_add(String id,String time,String mc_type) {
         new Add_Mold_working().execute(url_mode_yes.replace("Createmold_unit_api","Createmold_duplicate_api") +"&id_update="+ id + "&end=" + time +"&mc_type=" + mc_type);
         Log.d("Add_Mode_working_yes", url_mode_yes.replace("Createmold_unit_api","Createmold_duplicate_api")+"&id_update="+ id + "&end=" + time);
-//        new Data_Staff_working().execute("http://117.0.22.171/product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon+"&id_update="+ id + "&end=" + time);
-//        Log.d("Data_Staff_working", "http://117.0.22.171/product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon+"&id_update="+ id + "&end=" +time);
+//        new Data_Staff_working().execute("http://ssmes.autonsi.com//product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon+"&id_update="+ id + "&end=" + time);
+//        Log.d("Data_Staff_working", "http://ssmes.autonsi.com//product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon+"&id_update="+ id + "&end=" +time);
     }
 
     private void add_mc_working_add(String id,String time) {
         new Add_MC_working().execute(url_mc_yes.replace("Createprocessmachine_unit_API","Createprocessmachine_duplicate_api") +"&id_update="+ id + "&end=" + time);
         Log.d("Add_MC_working_yes", url_mc_yes.replace("Createprocessmachine_unit_API","Createprocessmachine_duplicate_api")+"&id_update="+ id + "&end=" + time);
-//        new Data_Staff_working().execute("http://117.0.22.171/product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon+"&id_update="+ id + "&end=" + time);
-//        Log.d("Data_Staff_working", "http://117.0.22.171/product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon+"&id_update="+ id + "&end=" +time);
+//        new Data_Staff_working().execute("http://ssmes.autonsi.com//product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon+"&id_update="+ id + "&end=" + time);
+//        Log.d("Data_Staff_working", "http://ssmes.autonsi.com//product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon+"&id_update="+ id + "&end=" +time);
     }
     private void add_staff_working_add(String id,String time) {
         new Add_Staff_working().execute(url_addstaff_yes.replace("Createprocess_unitstaff_api","Createprocessstaff_duplicate") +"&id_update="+ id + "&end=" + time);
         Log.d("Add_Staff_working_yes", url_addstaff_yes.replace("Createprocess_unitstaff_api","Createprocessstaff_duplicate")+"&id_update="+ id + "&end=" + time);
-//        new Data_Staff_working().execute("http://117.0.22.171/product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon+"&id_update="+ id + "&end=" + time);
-//        Log.d("Data_Staff_working", "http://117.0.22.171/product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon+"&id_update="+ id + "&end=" +time);
+//        new Data_Staff_working().execute("http://ssmes.autonsi.com//product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon+"&id_update="+ id + "&end=" + time);
+//        Log.d("Data_Staff_working", "http://ssmes.autonsi.com//product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon+"&id_update="+ id + "&end=" +time);
     }
 
     private void LoadData_staff_working() {
-        new Data_Staff_working().execute("http://117.0.22.171/product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon);
-        Log.d("Data_Staff_working", "http://117.0.22.171/product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon);
+        new Data_Staff_working().execute("http://ssmes.autonsi.com//product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon);
+        Log.d("Data_Staff_working", "http://ssmes.autonsi.com//product/get_staff?process_nm=" + processnamechon+"&fo_no="+WOchon);
     }
 
     class Data_Staff_working extends AsyncTask<String, Integer, String> {
@@ -2243,11 +2243,11 @@ public class ActualFragment extends Fragment {
                 } else {
 
                     vitrilamviec = vitriLV[0];
-                    new Data_vt_lamviec().execute("http://117.0.22.171/product/get_staff_type");
-                    Log.d("Data_vt_lamviec", "http://117.0.22.171/product/get_staff_type");
+                    new Data_vt_lamviec().execute("http://ssmes.autonsi.com//product/get_staff_type");
+                    Log.d("Data_vt_lamviec", "http://ssmes.autonsi.com//product/get_staff_type");
 
 
-                    //  http://117.0.22.171/product/Createprocess_unitstaff_api?process_nm=FNS001&staff_id=180033&staff_tp=LEA
+                    //  http://ssmes.autonsi.com//product/Createprocess_unitstaff_api?process_nm=FNS001&staff_id=180033&staff_tp=LEA
                 }
             }
         });
@@ -2352,19 +2352,19 @@ public class ActualFragment extends Fragment {
             @Override
             public void onItemClick(int position) {
                 // /product/Createprocess_unitstaff_api?process_nm=ROT027&staff_id=180038&staff_tp=LEA
-                url_addstaff_yes = "http://117.0.22.171/product/Createprocess_unitstaff_api?process_nm=" +
+                url_addstaff_yes = "http://ssmes.autonsi.com//product/Createprocess_unitstaff_api?process_nm=" +
                         processnamechon +
                         "&staff_id=" +
                         staffAllMasters.get(vitrilamviec).getStaffId() +
                         "&staff_tp=" +
                         vitriLamviecMasters.get(position).getId()+"&fo_no="+WOchon;
-                new Add_Staff_working().execute("http://117.0.22.171/product/Createprocess_unitstaff_api?process_nm=" +
+                new Add_Staff_working().execute("http://ssmes.autonsi.com//product/Createprocess_unitstaff_api?process_nm=" +
                         processnamechon +
                         "&staff_id=" +
                         staffAllMasters.get(vitrilamviec).getStaffId() +
                         "&staff_tp=" +
                         vitriLamviecMasters.get(position).getId()+"&fo_no="+WOchon);
-                Log.d("Add_Staff_working", "http://117.0.22.171/product/Createprocess_unitstaff_api?process_nm=" +
+                Log.d("Add_Staff_working", "http://ssmes.autonsi.com//product/Createprocess_unitstaff_api?process_nm=" +
                         processnamechon +
                         "&staff_id=" +
                         staffAllMasters.get(vitrilamviec).getStaffId() +
@@ -2423,7 +2423,7 @@ public class ActualFragment extends Fragment {
     private void dialogxacnhanmode(String id,String time,String mc_type) {
         AlertDialog.Builder alertDialogadd = new AlertDialog.Builder(getActivity());
         alertDialogadd.setCancelable(false);
-        alertDialogadd.setTitle("Confirm add Machine");;
+        alertDialogadd.setTitle("Confirm add Mode");;
 
         alertDialogadd.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
@@ -2464,7 +2464,7 @@ public class ActualFragment extends Fragment {
     private void dialogxacnhan(String id,String time) {
         AlertDialog.Builder alertDialogadd = new AlertDialog.Builder(getActivity());
         alertDialogadd.setCancelable(false);
-        alertDialogadd.setTitle("Confirm add Mode");;
+        alertDialogadd.setTitle("Confirm add Staff");;
 
         alertDialogadd.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
@@ -2523,8 +2523,8 @@ public class ActualFragment extends Fragment {
 
 
     private void Data_Staff_working_All() {
-        new Data_Staff_working_All().execute("http://117.0.22.171/product/get_staff_list_all");
-        Log.d("Data_Staff_working_All", "http://117.0.22.171/product/get_staff_list_all");
+        new Data_Staff_working_All().execute("http://ssmes.autonsi.com//product/get_staff_list_all");
+        Log.d("Data_Staff_working_All", "http://ssmes.autonsi.com//product/get_staff_list_all");
     }
 
     class Data_Staff_working_All extends AsyncTask<String, Integer, String> {
@@ -2587,8 +2587,8 @@ public class ActualFragment extends Fragment {
 
 
         if (WOchon != null && Linechon != null && processchon != null) {
-            new docJSONdata().execute("http://117.0.22.171/product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
-            Log.d("docJSONData", "http://117.0.22.171/product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
+            new docJSONdata().execute("http://ssmes.autonsi.com//product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
+            Log.d("docJSONData", "http://ssmes.autonsi.com//product/get_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon);
         }
     }
 
@@ -2612,8 +2612,8 @@ public class ActualFragment extends Fragment {
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                new Delete_Staff_working().execute("http://117.0.22.171/product/Delete_api?psid=" + staffMasters.get(position).getStaffNo());
-                Log.d("Delete_Staff_working", "http://117.0.22.171/product/Delete_api?psid=" + staffMasters.get(position).getStaffNo());
+                new Delete_Staff_working().execute("http://ssmes.autonsi.com//product/Delete_api?psid=" + staffMasters.get(position).getStaffNo());
+                Log.d("Delete_Staff_working", "http://ssmes.autonsi.com//product/Delete_api?psid=" + staffMasters.get(position).getStaffNo());
             }
         })
                 .setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -2632,8 +2632,8 @@ public class ActualFragment extends Fragment {
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                new Delete_Machine_working().execute("http://117.0.22.171/product/Delete_mc_api?pmid=" + machineMasters.get(position).getStaffNo());
-                Log.d("Delete_Machine_working", "http://117.0.22.171/product/Delete_mc_api?pmid=" + machineMasters.get(position).getStaffNo());
+                new Delete_Machine_working().execute("http://ssmes.autonsi.com//product/Delete_mc_api?pmid=" + machineMasters.get(position).getStaffNo());
+                Log.d("Delete_Machine_working", "http://ssmes.autonsi.com//product/Delete_mc_api?pmid=" + machineMasters.get(position).getStaffNo());
             }
         })
                 .setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -2652,8 +2652,8 @@ public class ActualFragment extends Fragment {
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                new Delete_Mole_working().execute("http://117.0.22.171/product/Delete_mold_api?pmid=" + moldMasters.get(position).getStaffNo());
-                Log.d("Delete_Mole_working", "http://117.0.22.171/product/Delete_mold_api?pmid=" + moldMasters.get(position).getStaffNo());
+                new Delete_Mole_working().execute("http://ssmes.autonsi.com//product/Delete_mold_api?pmid=" + moldMasters.get(position).getStaffNo());
+                Log.d("Delete_Mole_working", "http://ssmes.autonsi.com//product/Delete_mold_api?pmid=" + moldMasters.get(position).getStaffNo());
             }
         })
                 .setNegativeButton("NO", new DialogInterface.OnClickListener() {

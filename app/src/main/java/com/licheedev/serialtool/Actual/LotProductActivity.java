@@ -175,6 +175,7 @@ public class LotProductActivity extends AppCompatActivity {
         buttonMapping = findViewById(R.id.buttonMapping);
         buttonPrint = findViewById(R.id.buttonPrint);
 
+
         Intent intent = getIntent();
         WOchon = intent.getStringExtra("WOchon");
         ProcessChon = intent.getStringExtra("processchon");
@@ -191,6 +192,7 @@ public class LotProductActivity extends AppCompatActivity {
 
         level = intent.getStringExtra("level");
         GetTimeSever();
+
 
 
         tvproductCode.setText(ActualFragment.Productcode);
@@ -268,56 +270,56 @@ public class LotProductActivity extends AppCompatActivity {
 //                } else {
 
 
-                    tv_LotCode.setText("");
-                    //  GroupQtynum = GroupQty.getText().toString().trim();
-                    //QRQtynum = QRQty.getText().toString().trim();
-                    productMasterArrayList = new ArrayList<ProductMaster>();
-                    productMasterAdaptor = new ProductMasterAdaptor(
-                            LotProductActivity.this, R.layout.item_product, productMasterArrayList);
-                    lvDanhSanhproduct.setAdapter(productMasterAdaptor);
+                tv_LotCode.setText("");
+                //  GroupQtynum = GroupQty.getText().toString().trim();
+                //QRQtynum = QRQty.getText().toString().trim();
+                productMasterArrayList = new ArrayList<ProductMaster>();
+                productMasterAdaptor = new ProductMasterAdaptor(
+                        LotProductActivity.this, R.layout.item_product, productMasterArrayList);
+                lvDanhSanhproduct.setAdapter(productMasterAdaptor);
 
-                    if (ProcessChon.length() == 0 || Datechon.length() == 0 || WOchon.length() == 0 || Linechon.length() == 0) {
-                        Toast.makeText(LotProductActivity.this, "Data incorrect!!!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // if (GroupQty.length() != 0) {
-                        new docJSONtaomoi().execute("http://117.0.22.171/Lot/Creat_row?wo_no=" +
-                                WOchon +
-                                "&gr_qty=" +
-                                0 + //GroupQtynum
-                                "&prounit_cd=" +
-                                ProcessChon +
-                                "&date=" +
-                                Datechon +
-                                "&line_no=" +
-                                Linechon +
-                                "&pr_nm=" +
-                                ProcessnameChon +
-                                "&index=" +
-                                index +
-                                "&style_no=" +
-                                style_no + "&bom_no=" + bom_no + "&level=" + level);
-                        Log.d("taomoi", "http://117.0.22.171/Lot/Creat_row?wo_no=" +
-                                WOchon +
-                                "&gr_qty=" +
-                                0 + //GroupQtynum
-                                "&prounit_cd=" +
-                                ProcessChon +
-                                "&date=" +
-                                Datechon +
-                                "&line_no=" +
-                                Linechon +
-                                "&pr_nm=" +
-                                ProcessnameChon +
-                                "&index=" +
-                                index +
-                                "&style_no=" +
-                                style_no + "&bom_no=" + bom_no + "&level=" + level);
+                if (ProcessChon.length() == 0 || Datechon.length() == 0 || WOchon.length() == 0 || Linechon.length() == 0) {
+                    Toast.makeText(LotProductActivity.this, "Data incorrect!!!", Toast.LENGTH_SHORT).show();
+                } else {
+                    // if (GroupQty.length() != 0) {
+                    new docJSONtaomoi().execute("http://ssmes.autonsi.com//Lot/Creat_row?wo_no=" +
+                            WOchon +
+                            "&gr_qty=" +
+                            0 + //GroupQtynum
+                            "&prounit_cd=" +
+                            ProcessChon +
+                            "&date=" +
+                            Datechon +
+                            "&line_no=" +
+                            Linechon +
+                            "&pr_nm=" +
+                            ProcessnameChon +
+                            "&index=" +
+                            index +
+                            "&style_no=" +
+                            style_no + "&bom_no=" + bom_no + "&level=" + level);
+                    Log.d("taomoi", "http://ssmes.autonsi.com//Lot/Creat_row?wo_no=" +
+                            WOchon +
+                            "&gr_qty=" +
+                            0 + //GroupQtynum
+                            "&prounit_cd=" +
+                            ProcessChon +
+                            "&date=" +
+                            Datechon +
+                            "&line_no=" +
+                            Linechon +
+                            "&pr_nm=" +
+                            ProcessnameChon +
+                            "&index=" +
+                            index +
+                            "&style_no=" +
+                            style_no + "&bom_no=" + bom_no + "&level=" + level);
 //                    } else {
 //                        Toast.makeText(LotProductActivity.this, "Insert Group Qty", Toast.LENGTH_SHORT).show();
 //                        getdata();
 //                    }
-                    }
-               // }
+                }
+                // }
             }
         });
 
@@ -333,8 +335,8 @@ public class LotProductActivity extends AppCompatActivity {
     }
 
     private void GetTimeSever() {
-        new docTimesever().execute("http://117.0.22.171/product/get_time_sever");
-        Log.d("docTimesever", "http://117.0.22.171/product/get_time_sever");
+        new docTimesever().execute("http://ssmes.autonsi.com//product/get_time_sever");
+        Log.d("docTimesever", "http://ssmes.autonsi.com//product/get_time_sever");
     }
 
     class docTimesever extends AsyncTask<String, Integer, String> {
@@ -643,9 +645,9 @@ public class LotProductActivity extends AppCompatActivity {
             // TODO 15/05/2020//
 
             if (bbNo.length() > 0 && idWm.length() > 0) {
-                new jsonMapping().execute("http://117.0.22.171/ActualWO/Mapping_bb_api_buyer?prd_lcd=" + idWm +
+                new jsonMapping().execute("http://ssmes.autonsi.com//ActualWO/Mapping_bb_api_buyer?prd_lcd=" + idWm +
                         "&buyer_qr=" + bbNo);
-                Log.d("Bobbing", "http://117.0.22.171/ActualWO/Mapping_bb_api_buyer?prd_lcd=" + idWm +
+                Log.d("Bobbing", "http://ssmes.autonsi.com//ActualWO/Mapping_bb_api_buyer?prd_lcd=" + idWm +
                         "&buyer_qr=" + bbNo);
             } else {
                 Toast.makeText(LotProductActivity.this, "Please insert \"Bobbin code\" and select \"Lot code\"", Toast.LENGTH_LONG).show();
@@ -736,7 +738,7 @@ public class LotProductActivity extends AppCompatActivity {
 //
 //
 //        int position = (int) view.getTag();
-//        String url = "http://117.0.22.171/ActualWO/Xoa_mt_pp_product?id="+ productMasterArrayList.get(position).getWmtid();
+//        String url = "http://ssmes.autonsi.com//ActualWO/Xoa_mt_pp_product?id="+ productMasterArrayList.get(position).getWmtid();
 //        new jsonDelete().execute(url);
 //        Log.d("jsonDelete",url);
 //    }
@@ -1030,13 +1032,19 @@ public class LotProductActivity extends AppCompatActivity {
     }
 
     private void getdata() {
-        new docJSONData().execute("http://117.0.22.171/Lot/getmt_date_web?wo_no=" +
+        new docJSONData().execute("http://ssmes.autonsi.com//Lot/getmt_date_web?wo_no=" +
                 WOchon + "&prounit_cd=" + ProcessChon + "&date=" + Datechon + "&pr_nm=" +
                 ProcessnameChon + "&index=" + index + "&style_no=" + style_no + "&bom_no=" + bom_no + "&level=" + level);
 
-        Log.d("lay data", "http://117.0.22.171/Lot/getmt_date_web?wo_no=" +
+        Log.d("lay data", "http://ssmes.autonsi.com//Lot/getmt_date_web?wo_no=" +
                 WOchon + "&prounit_cd=" + ProcessChon + "&date=" + Datechon + "&pr_nm=" +
                 ProcessnameChon + "&index=" + index + "&style_no=" + style_no + "&bom_no=" + bom_no + "&level=" + level);
 
+    }
+
+    @Override
+    protected void onResume() {
+        getdata();
+        super.onResume();
     }
 }

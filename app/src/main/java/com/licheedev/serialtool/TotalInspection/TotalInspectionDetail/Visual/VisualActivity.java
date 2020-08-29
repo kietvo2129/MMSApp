@@ -71,8 +71,8 @@ public class VisualActivity extends AppCompatActivity {
     }
 
     private void loaddata() {
-        new getData().execute("http://117.0.22.171/TotalInspection/list_data_visual?pno=" + idPLno);
-        Log.d("getData", "http://117.0.22.171/TotalInspection/list_data_visual?pno=" + idPLno);
+        new getData().execute("http://ssmes.autonsi.com//TotalInspection/list_data_visual?pno=" + idPLno);
+        Log.d("getData", "http://ssmes.autonsi.com//TotalInspection/list_data_visual?pno=" + idPLno);
     }
 
     private class getData extends AsyncTask<String, Void, String> {
@@ -357,8 +357,8 @@ public class VisualActivity extends AppCompatActivity {
                 if (numOk == 0 && numDefecty ==0){
 
                 }else {
-                    new SaveData_Check().execute("http://117.0.22.171/TotalInspection/save_thickness_visual?pino=" + idPLno + "&ti_cd=" + "TI0002" + "&ok_qty=" + numOk + "&def_qty=" + numDefecty);
-                    Log.d("SaveData_Check", "http://117.0.22.171/TotalInspection/save_thickness_visual?pino=" + idPLno + "&ti_cd=" + "TI0002" + "&ok_qty=" + numOk + "&def_qty=" + numDefecty);
+                    new SaveData_Check().execute("http://ssmes.autonsi.com//TotalInspection/save_thickness_visual?pino=" + idPLno + "&ti_cd=" + "TI0002" + "&ok_qty=" + numOk + "&def_qty=" + numDefecty);
+                    Log.d("SaveData_Check", "http://ssmes.autonsi.com//TotalInspection/save_thickness_visual?pino=" + idPLno + "&ti_cd=" + "TI0002" + "&ok_qty=" + numOk + "&def_qty=" + numDefecty);
                     alertDialog.dismiss();
                 }
 

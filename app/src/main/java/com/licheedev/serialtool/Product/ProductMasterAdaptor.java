@@ -110,6 +110,7 @@ public class ProductMasterAdaptor extends BaseAdapter {
                 if (level.equals("last")) {
                     Intent intent = new Intent(context, LotProductMappingActivity.class);
                     intent.putExtra("mt_qrcode", productMaster.getMt_qrcode());
+                    intent.putExtra("numQty", productMaster.getGr_qty());
                     context.startActivity(intent);
                 } else {
                     Intent intent = new Intent(context, LotCompositeMappingActivity.class);
@@ -169,18 +170,18 @@ public class ProductMasterAdaptor extends BaseAdapter {
                             productMasters.get(position).setGr_qty(bbCodenum + "");
                             notifyDataSetChanged();
 //                            Toast.makeText(context, "" + productMaster.getWmtid(), Toast.LENGTH_SHORT).show();
-//                            http://117.0.22.171/Lot/update_w_material_gr_api?gr_qty=50&id=1221
+//                            http://ssmes.autonsi.com//Lot/update_w_material_gr_api?gr_qty=50&id=1221
                             if (level.equals("last")) {
-                                new docJSONchinhsua().execute("http://117.0.22.171/Lot/update_w_material_gr_api?gr_qty=" +
+                                new docJSONchinhsua().execute("http://ssmes.autonsi.com//Lot/update_w_material_gr_api?gr_qty=" +
                                         bbCodenum + "&id=" + productMaster.getWmtid() + "&level=" + level);
                                 dialog.cancel();
-                                Log.d("chinh sua", "http://117.0.22.171/Lot/update_w_material_gr_api?gr_qty=" +
+                                Log.d("chinh sua", "http://ssmes.autonsi.com//Lot/update_w_material_gr_api?gr_qty=" +
                                         bbCodenum + "&id=" + productMaster.getWmtid() + "&level=" + level);
                             } else {
-                                new docJSONchinhsua().execute("http://117.0.22.171/Lot/update_w_material_gr_api?gr_qty=" +
+                                new docJSONchinhsua().execute("http://ssmes.autonsi.com//Lot/update_w_material_gr_api?gr_qty=" +
                                         bbCodenum + "&id=" + productMaster.getWmtid() + "&level=" + level + "&line_no=" + Linechon + "&fo_no=" + WOchon);
                                 dialog.cancel();
-                                Log.d("chinh sua", "http://117.0.22.171/Lot/update_w_material_gr_api?gr_qty=" +
+                                Log.d("chinh sua", "http://ssmes.autonsi.com//Lot/update_w_material_gr_api?gr_qty=" +
                                         bbCodenum + "&id=" + productMaster.getWmtid() + "&level=" + level + "&line_no=" + Linechon + "&fo_no=" + WOchon);
                             }
                         }

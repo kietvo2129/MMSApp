@@ -60,7 +60,7 @@ public class DMActivity extends AppCompatActivity{
         findViewById(R.id.logo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DMActivity.this, "117.0.22.171", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DMActivity.this, "http://ssmes.autonsi.com/", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -76,10 +76,10 @@ public class DMActivity extends AppCompatActivity{
 
                         user = edtuser.getText().toString();
                         pass = edtpass.getText().toString();
-                        Log.d("Login","http://117.0.22.171/Product/" + "Login?" + "user=" + user + "&password=" + pass);
+                        Log.d("Login","http://ssmes.autonsi.com//Product/" + "Login?" + "user=" + user + "&password=" + pass+"&type=" + "MMS");
                         if(user.length()>0&&pass.length()>0){
                             //Toast.makeText(DMActivity.this, "Logging in to the system", Toast.LENGTH_SHORT).show();
-                            new docJSON().execute("http://117.0.22.171/Product/" + "Login?" + "user=" + user + "&password=" + pass);/// gui du lieu len server
+                            new docJSON().execute("http://ssmes.autonsi.com//Product/" + "Login?" + "user=" + user + "&password=" + pass+"&type=" + "MMS");/// gui du lieu len server
                         }else{
                             Toast.makeText(DMActivity.this, "Complete user and password", Toast.LENGTH_SHORT).show();
                         }

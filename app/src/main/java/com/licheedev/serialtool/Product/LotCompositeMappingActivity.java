@@ -39,7 +39,7 @@ public class LotCompositeMappingActivity extends AppCompatActivity {
     ArrayList<LotCompositeMaster> lotCompositeMasterArrayList;
     LotCompositeMasterAdaptor lotCompositeMasterAdaptor;
     ListView lvDanhSanhproduct;
-    TextView buttonSave,buttonFinish,buttonDelete;
+    TextView buttonSave,buttonFinish,buttonDelete,buttonCuttingpacking;
     String MaterialCode;
     int idchon = -1, kiemtrascan = -1;
 
@@ -57,7 +57,9 @@ public class LotCompositeMappingActivity extends AppCompatActivity {
         buttonSave = findViewById(R.id.buttonSave);
         buttonFinish = findViewById(R.id.buttonFinish);
         buttonDelete = findViewById(R.id.buttonDelete);
+        buttonCuttingpacking = findViewById(R.id.buttonCuttingpacking);
 
+        buttonCuttingpacking.setVisibility(View.GONE);
 
         Intent intent = getIntent();
         LotCode = intent.getStringExtra("mt_qrcode");
@@ -105,10 +107,10 @@ public class LotCompositeMappingActivity extends AppCompatActivity {
                     //Toast.makeText(LotCompositeMappingActivity.this, "Insert Material Code", Toast.LENGTH_SHORT).show();
                     AlertNotExist("Insert Material Code or MT Bobbin");
                 } else {
-                    new docJSONSaveMaterial().execute("http://117.0.22.171/Lot/insertw_material_mping_api?mt_cd=" +
+                    new docJSONSaveMaterial().execute("http://ssmes.autonsi.com//Lot/insertw_material_mping_api?mt_cd=" +
                             LotCode + "&qr_code=" +
                             MaterialCode + "&bb_no="+ MTbb_no + "&bom_no=" + bom_no + "&prounit_cd=" + ProcessChon+ "&level=" + level);
-                    Log.d("SaveMaterial", "http://117.0.22.171/Lot/insertw_material_mping_api?mt_cd=" +
+                    Log.d("SaveMaterial", "http://ssmes.autonsi.com//Lot/insertw_material_mping_api?mt_cd=" +
                             LotCode + "&qr_code=" + MaterialCode +  "&bb_no="+ MTbb_no + "&bom_no=" + bom_no + "&prounit_cd=" + ProcessChon+ "&level=" + level);
                 }
 
@@ -126,8 +128,8 @@ public class LotCompositeMappingActivity extends AppCompatActivity {
                     AlertNotExist("No lines have been selected yet");
                 }else {
                     if (lotCompositeMasterArrayList.get(idchon).getUse_yn().equals("Y")){
-                        new docJSONfinish().execute("http://117.0.22.171/Lot/chane_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid() + "&bb_no="+ MTbb_no + "&level=" + level);
-                        Log.d("Finsish","http://117.0.22.171/Lot/chane_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid() + "&bb_no="+ MTbb_no + "&level=" + level);
+                        new docJSONfinish().execute("http://ssmes.autonsi.com//Lot/chane_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid() + "&bb_no="+ MTbb_no + "&level=" + level);
+                        Log.d("Finsish","http://ssmes.autonsi.com//Lot/chane_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid() + "&bb_no="+ MTbb_no + "&level=" + level);
                     }
                 }
             }
@@ -140,8 +142,8 @@ public class LotCompositeMappingActivity extends AppCompatActivity {
                     AlertNotExist("No lines have been selected yet");
                 }else {
                     if (lotCompositeMasterArrayList.get(idchon).getUse_yn().equals("Y")||lotCompositeMasterArrayList.get(idchon).getUse_yn().equals("N")){
-                        new docJSONfinish().execute("http://117.0.22.171/Lot/Delete_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid()  + "&level=" + level);
-                        Log.d("delect","http://117.0.22.171/Lot/Delete_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid()  + "&level=" + level);
+                        new docJSONfinish().execute("http://ssmes.autonsi.com//Lot/Delete_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid()  + "&level=" + level);
+                        Log.d("delect","http://ssmes.autonsi.com//Lot/Delete_mapping_api?id=" + lotCompositeMasterArrayList.get(idchon).getWmmid()  + "&level=" + level);
                     }
                 }
             }
@@ -157,13 +159,13 @@ public class LotCompositeMappingActivity extends AppCompatActivity {
     }
 
     private void Loaddata(){
-        new docJSONmapping().execute("http://117.0.22.171/lot/ds_mapping_w_api?mt_lot=" +
+        new docJSONmapping().execute("http://ssmes.autonsi.com//lot/ds_mapping_w_api?mt_lot=" +
                 LotCode +
                 "&bom_no=" +
                 bom_no +
                 "&prounit_cd=" +
                 ProcessChon+"&level=" + level);
-        Log.d("Mapping", "http://117.0.22.171/lot/ds_mapping_w_api?mt_lot=" +
+        Log.d("Mapping", "http://ssmes.autonsi.com//lot/ds_mapping_w_api?mt_lot=" +
                 LotCode +
                 "&bom_no=" +
                 bom_no +

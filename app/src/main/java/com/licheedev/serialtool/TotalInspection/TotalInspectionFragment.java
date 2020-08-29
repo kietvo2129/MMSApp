@@ -48,8 +48,8 @@ public class TotalInspectionFragment extends Fragment {
 
         lvds = view.findViewById(R.id.lvDanhSanh);
 
-      //  new ReadJSON().execute("http://117.0.22.171/TotalInspection/getIns_list_ProInfo");
-     //   Log.d("Total inspection","http://117.0.22.171/TotalInspection/getIns_list_ProInfo");
+      //  new ReadJSON().execute("http://ssmes.autonsi.com//TotalInspection/getIns_list_ProInfo");
+     //   Log.d("Total inspection","http://ssmes.autonsi.com//TotalInspection/getIns_list_ProInfo");
         lvds.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -177,8 +177,8 @@ public class TotalInspectionFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        new ReadJSON().execute("http://117.0.22.171/TotalInspection/getIns_list_ProInfo");
-        Log.d("Total inspection","http://117.0.22.171/TotalInspection/getIns_list_ProInfo");
+        new ReadJSON().execute("http://ssmes.autonsi.com//TotalInspection/getIns_list_ProInfo");
+        Log.d("Total inspection","http://ssmes.autonsi.com//TotalInspection/getIns_list_ProInfo");
     }
 
 

@@ -22,17 +22,22 @@
         android:roundIcon="@drawable/mms"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Actual.ScheduleActivity"
+        <activity android:name=".Actual.CuttingPackingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemee"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity
+            android:name=".Actual.ScheduleActivity"
             android:parentActivityName=".MainLayout"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemee"
-            android:windowSoftInputMode="stateHidden|stateUnchanged"></activity>
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
         <activity
             android:name=".TotalInspection.TotalInspectionDetail.Visual.VisualActivity"
             android:parentActivityName=".TotalInspection.TotalInspectionDetail.TotalInspectionDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemee"
-            android:windowSoftInputMode="stateHidden|stateUnchanged"></activity>
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
         <activity
             android:name=".QC_check.PQC"
             android:parentActivityName=".Actual.LotCompositeActivity"

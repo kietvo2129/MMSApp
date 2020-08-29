@@ -92,7 +92,7 @@ public class ProductFragment extends Fragment {
     ListView lvDanhSanhproduct;
     private int vitri = -1;
 
-    String API_MAPPING = "http://117.0.22.171/Lot/maping_code_bb?bb_no="; //BB000000001&wmtid=1123";
+    String API_MAPPING = "http://ssmes.autonsi.com//Lot/maping_code_bb?bb_no="; //BB000000001&wmtid=1123";
     String API_MAPPING1 = "&wmtid=";
 
     @Nullable
@@ -147,7 +147,7 @@ public class ProductFragment extends Fragment {
             }
         });
 
-        new docJSONwo().execute("http://117.0.22.171/Lot/selec_wo");
+        new docJSONwo().execute("http://ssmes.autonsi.com//Lot/selec_wo");
 
         buttonCreating.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,7 +165,7 @@ public class ProductFragment extends Fragment {
                 }else {
                     if (GroupQty.length() != 0) {
                         if (QRQtynum.length() != 0) {
-                            new docJSONData().execute("http://117.0.22.171/Lot/Creat_row?wo_no=" +
+                            new docJSONData().execute("http://ssmes.autonsi.com//Lot/Creat_row?wo_no=" +
                                     WOchon +
                                     "&qr_qty=" +
                                     QRQtynum +
@@ -410,7 +410,7 @@ public class ProductFragment extends Fragment {
 
                 WOchon = arrayLineWO.get(position);
 
-                new docJSONline().execute("http://117.0.22.171/Lot/return_line_pro?wo=" + WOchon);
+                new docJSONline().execute("http://ssmes.autonsi.com//Lot/return_line_pro?wo=" + WOchon);
 
             }
 
@@ -477,7 +477,7 @@ public class ProductFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
 
                 ProcessChon = arrayLineProcessCD.get(position);
-                new docJSONDate().execute("http://117.0.22.171/Lot/return_date?wo=" +
+                new docJSONDate().execute("http://ssmes.autonsi.com//Lot/return_date?wo=" +
                         WOchon +
                         "&prounit_cd=" +
                         ProcessChon);
@@ -527,7 +527,7 @@ public class ProductFragment extends Fragment {
 
                 Datechon = arrayLineDateCD.get(position);
                 //Toast.makeText(getActivity(), "" + Datechon, Toast.LENGTH_SHORT).show();
-                // http://117.0.22.171/Lot/Creat_row?wo_no=W0000000016&qr_qty=1&gr_qty=30&prounit_cd=CUT002&date=20191005&line_no=LN00020
+                // http://ssmes.autonsi.com//Lot/Creat_row?wo_no=W0000000016&qr_qty=1&gr_qty=30&prounit_cd=CUT002&date=20191005&line_no=LN00020
 
             }
 

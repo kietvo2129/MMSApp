@@ -63,7 +63,7 @@ public class CompositeFragment extends Fragment {
         spinnerPro = view.findViewById(R.id.spinnerPro);
         spinnerDate = view.findViewById(R.id.spinnerDate);
 
-        new docJSONwo().execute("http://117.0.22.171/Lot/selec_wo");
+        new docJSONwo().execute("http://ssmes.autonsi.com//Lot/selec_wo");
 
         return view;
     }
@@ -102,7 +102,7 @@ public class CompositeFragment extends Fragment {
 
                 WOchon = arrayLineWO.get(position);
 
-                new docJSONline().execute("http://117.0.22.171/product/return_line_pro?wo=" + WOchon);
+                new docJSONline().execute("http://ssmes.autonsi.com//product/return_line_pro?wo=" + WOchon);
 
             }
 

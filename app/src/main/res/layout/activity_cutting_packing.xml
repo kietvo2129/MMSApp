@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackGround"
+    tools:context=".Actual.CuttingPackingActivity">
+
+    <RelativeLayout
+        android:layout_marginLeft="16dp"
+        android:id="@+id/t5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/t4"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/aaa"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center|left"
+            android:paddingEnd="4dp"
+            android:text="Product Lot"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/tv_lotCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_toEndOf="@+id/aaa"
+            android:background="#E2E2E2"
+            android:gravity="center|left"
+            android:padding="8dp"
+            android:paddingLeft="8dp" />
+
+    </RelativeLayout>
+
+
+    <HorizontalScrollView
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/t5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/kkk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/boder_b_t"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:gravity="center"
+                    android:text="No"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="#94F5FA" />
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:gravity="center"
+                    android:text="MT Cd"
+                    android:textColor="#94F5FA" />
+
+                <TextView
+                    android:layout_width="550dp"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:gravity="center"
+                    android:text="ML No"
+                    android:textColor="#94F5FA" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:gravity="center"
+                    android:text="Group Qty"
+                    android:textColor="#94F5FA" />
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="MT No"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="Type"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="Status"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="Location"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="Location Status"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="Departure"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="Destination"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="Bobbin No"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="Description"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="MT Name"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="500dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="Origin ML No"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="Create Name"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="Create Date"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/ic_topdown"
+                    android:text="Change Name"
+                    android:textColor="#94F5FA" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Change Date"
+                    android:textColor="#94F5FA" />
+                <!--                <TextView-->
+                <!--                    android:layout_width="100dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:text="Delete"-->
+                <!--                    android:textColor="#94F5FA" />-->
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/lvDanhSanhproduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/kkk"
+                android:layout_marginTop="5dp"
+                android:listSelector="#4a94F5FA"
+                tools:listitem="@layout/item_cutting_packing" />
+        </RelativeLayout>
+
+    </HorizontalScrollView>
+
+
+</RelativeLayout>

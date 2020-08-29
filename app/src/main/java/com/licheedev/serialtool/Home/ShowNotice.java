@@ -161,7 +161,7 @@ public class ShowNotice extends AppCompatActivity {
 
                 switch (kiemtra) {
                     case "A":
-                        String apiAdd = "http://117.0.22.171/product/get_notice_board_edit?mno=" + finalMno + "&title=" + Title + "&content=" + str + "&reg_id=" + userlogin + "&div_cd=A";
+                        String apiAdd = "http://ssmes.autonsi.com//product/get_notice_board_edit?mno=" + finalMno + "&title=" + Title + "&content=" + str + "&reg_id=" + userlogin + "&div_cd=A";
                         new PostNoticeJson().execute(apiAdd);
                         tvTitel.setText(Title);
                         String tx = str.replace("\\n", "\n");
@@ -169,7 +169,7 @@ public class ShowNotice extends AppCompatActivity {
                         dialog.dismiss();
                         break;
                     case "M":
-                        new PostNoticeJson().execute("http://117.0.22.171/product/get_notice_board_edit?mno=" + finalMno + "&title=" + Title + "&content=" + str + "&reg_id=" + userlogin + "&div_cd=M");
+                        new PostNoticeJson().execute("http://ssmes.autonsi.com//product/get_notice_board_edit?mno=" + finalMno + "&title=" + Title + "&content=" + str + "&reg_id=" + userlogin + "&div_cd=M");
                         tvTitel.setText(Title);
                         String txx = str.replace("\\n", "\n");
                         tvcontext.setText(txx);

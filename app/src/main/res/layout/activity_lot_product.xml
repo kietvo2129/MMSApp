@@ -71,28 +71,28 @@
             android:id="@+id/tvWO"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:gravity="center"
-            android:textColor="#fff"
             android:layout_weight="3"
-            android:background="#00000000" />
+            android:background="#00000000"
+            android:gravity="center"
+            android:textColor="#fff" />
 
         <TextView
             android:id="@+id/tvRouting"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:textColor="#fff"
-            android:gravity="center"
             android:layout_weight="3"
-            android:background="#00000000" />
+            android:background="#00000000"
+            android:gravity="center"
+            android:textColor="#fff" />
 
         <TextView
             android:id="@+id/tvProcess"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:textColor="#fff"
-            android:gravity="center"
             android:layout_weight="3"
-            android:background="#00000000" />
+            android:background="#00000000"
+            android:gravity="center"
+            android:textColor="#fff" />
     </LinearLayout>
 
     <LinearLayout
@@ -116,6 +116,7 @@
             android:padding="0dp"
             android:text="Date"
             android:textColor="#94F5FA" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -125,26 +126,26 @@
             android:text="Product Code"
             android:textColor="#94F5FA" />
 
-<!--        <TextView-->
-<!--            android:visibility="gone"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:gravity="center"-->
-<!--            android:padding="0dp"-->
-<!--            android:text="Estimate Group Qty"-->
-<!--            android:textAlignment="center"-->
-<!--            android:textColor="#94F5FA" />-->
+        <!--        <TextView-->
+        <!--            android:visibility="gone"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:gravity="center"-->
+        <!--            android:padding="0dp"-->
+        <!--            android:text="Estimate Group Qty"-->
+        <!--            android:textAlignment="center"-->
+        <!--            android:textColor="#94F5FA" />-->
 
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="3"-->
-<!--            android:gravity="center"-->
-<!--            android:padding="0dp"-->
-<!--            android:text="QR Qty"-->
-<!--            android:textAlignment="center"-->
-<!--            android:textColor="#94F5FA" />-->
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_weight="3"-->
+        <!--            android:gravity="center"-->
+        <!--            android:padding="0dp"-->
+        <!--            android:text="QR Qty"-->
+        <!--            android:textAlignment="center"-->
+        <!--            android:textColor="#94F5FA" />-->
 
     </LinearLayout>
 
@@ -156,50 +157,51 @@
         android:layout_marginHorizontal="4dp"
         android:background="@drawable/boder_botton"
         android:orientation="horizontal"
-        android:paddingTop="4dp"
         android:paddingVertical="8dp"
+        android:paddingTop="4dp"
         android:weightSum="2">
 
         <TextView
             android:id="@+id/tvDate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:textColor="#fff"
             android:layout_weight="1"
             android:background="#00000000"
-            android:backgroundTint="#fff" />
+            android:backgroundTint="#fff"
+            android:gravity="center"
+            android:textColor="#fff" />
+
         <TextView
             android:id="@+id/tvproductCode"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:textColor="#fff"
             android:layout_weight="1"
             android:background="#00000000"
-            android:backgroundTint="#fff" />
+            android:backgroundTint="#fff"
+            android:gravity="center"
+            android:textColor="#fff" />
 
-<!--        <EditText-->
-<!--            android:visibility="gone"-->
-<!--            android:id="@+id/GroupQty"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:backgroundTint="#fff"-->
-<!--            android:imeOptions="actionDone"-->
-<!--            android:gravity="center"-->
-<!--            android:inputType="number"-->
-<!--            android:textColor="#fff" />-->
+        <!--        <EditText-->
+        <!--            android:visibility="gone"-->
+        <!--            android:id="@+id/GroupQty"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:backgroundTint="#fff"-->
+        <!--            android:imeOptions="actionDone"-->
+        <!--            android:gravity="center"-->
+        <!--            android:inputType="number"-->
+        <!--            android:textColor="#fff" />-->
 
-<!--        <EditText-->
-<!--            android:id="@+id/QRQty"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="3"-->
-<!--            android:backgroundTint="#fff"-->
-<!--            android:gravity="center"-->
-<!--            android:inputType="number"-->
-<!--            android:textColor="#fff" />-->
+        <!--        <EditText-->
+        <!--            android:id="@+id/QRQty"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_weight="3"-->
+        <!--            android:backgroundTint="#fff"-->
+        <!--            android:gravity="center"-->
+        <!--            android:inputType="number"-->
+        <!--            android:textColor="#fff" />-->
     </LinearLayout>
 
     <RelativeLayout
@@ -212,9 +214,9 @@
 
         <TextView
             android:id="@+id/aaa"
-            android:layout_centerVertical="true"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:gravity="center|left"
             android:paddingEnd="4dp"
             android:text="Lot Code"
@@ -244,20 +246,20 @@
         android:layout_marginTop="8dp">
 
         <TextView
-            android:layout_centerVertical="true"
             android:id="@+id/azaz"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:gravity="center|left"
             android:paddingEnd="4dp"
             android:text="Buyer QR"
             android:textColor="#fff" />
 
         <TextView
-            android:layout_centerVertical="true"
             android:id="@+id/tv_bobbinCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/btn_scan_BobbinCode"
             android:layout_toEndOf="@+id/azaz"
             android:background="#E2E2E2"
@@ -278,59 +280,68 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <HorizontalScrollView
         android:id="@+id/t7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/t6"
         android:layout_marginHorizontal="4dp"
-        android:gravity="right|center_vertical"
-        android:orientation="horizontal">
+        android:layout_below="@+id/t6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/buttonCreating"
-            android:layout_width="wrap_content"
+        <LinearLayout
+
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@drawable/lab"
-            android:textStyle="bold"
-            android:paddingVertical="8dp"
-            android:paddingHorizontal="16dp"
-            android:text="Creating\nLot Code"
-            android:layout_margin="8dp"
-            android:elevation="4dp"
 
-            android:textColor="#fff" />
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/buttonMapping"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/lab"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:elevation="4dp"
-            android:paddingVertical="8dp"
-            android:paddingHorizontal="16dp"
-            android:text="Mapping\nBuyer QR"
-            android:layout_margin="8dp"
-            android:textColor="#fff" />
-        <TextView
-            android:layout_margin="8dp"
-            android:id="@+id/buttonPrint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/lab"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:elevation="4dp"
-            android:paddingVertical="8dp"
-            android:paddingHorizontal="16dp"
-            android:text="Printing\nLot Code"
-            android:textColor="#fff" />
 
-    </LinearLayout>
 
+            <TextView
+                android:id="@+id/buttonCreating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/lab"
+                android:elevation="4dp"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:text="Creating\nLot Code"
+                android:textColor="#fff"
+
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/buttonMapping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/lab"
+                android:elevation="4dp"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:text="Mapping\nBuyer QR"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/buttonPrint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/lab"
+                android:elevation="4dp"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:text="Printing\nLot Code"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -353,18 +364,19 @@
                 <TextView
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:drawableEnd="@drawable/ic_topdown"
+                    android:gravity="center"
                     android:text="Material"
                     android:textColor="#94F5FA" />
+
                 <TextView
-                    android:visibility="gone"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:drawableEnd="@drawable/ic_topdown"
+                    android:gravity="center"
                     android:text="QC"
-                    android:textColor="#94F5FA" />
+                    android:textColor="#94F5FA"
+                    android:visibility="gone" />
 
                 <TextView
                     android:layout_width="350dp"
@@ -388,12 +400,12 @@
                     android:gravity="center"
                     android:text="Qty"
                     android:textColor="#94F5FA" />
-<!--                <TextView-->
-<!--                    android:layout_width="100dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="Delete"-->
-<!--                    android:textColor="#94F5FA" />-->
+                <!--                <TextView-->
+                <!--                    android:layout_width="100dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:text="Delete"-->
+                <!--                    android:textColor="#94F5FA" />-->
 
             </LinearLayout>
 

@@ -132,7 +132,7 @@ public class FragmentKeyin extends Fragment {
                 numActual = Integer.parseInt(numActualString);
                 numDefect = Integer.parseInt(tvDefectiveNum.getText().toString());
                 // numActual = numActual + 1;
-                new docJSONinsertActual().execute("http://117.0.22.171/product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
+                new docJSONinsertActual().execute("http://ssmes.autonsi.com//product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
                         + processchon + "&prounit_nm=" + prcunitchon + "&work_ymd=" + datechon + "&prod_sts_cd=" + "A" + "&done_qty=" + numActual + "&refer_qty=" + numDefect);
 
 
@@ -161,10 +161,10 @@ public class FragmentKeyin extends Fragment {
                         numActual = Integer.parseInt(numActualString);
                         numDefect = Integer.parseInt(tvDefectiveNum.getText().toString());
                         numActual = numActual + 1;
-                        new docJSONinsertActual().execute("http://117.0.22.171/product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
+                        new docJSONinsertActual().execute("http://ssmes.autonsi.com//product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
                                 + processchon + "&prounit_nm=" + prcunitchon + "&work_ymd=" + datechon + "&prod_sts_cd=" + "A" + "&done_qty=" + numActual + "&refer_qty=" + numDefect);
 
-                        Log.d("docJSONinsertActual", "http://117.0.22.171/product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
+                        Log.d("docJSONinsertActual", "http://ssmes.autonsi.com//product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
                                 + processchon + "&prounit_nm=" + prcunitchon + "&work_ymd=" + datechon + "&prod_sts_cd=" + "A" + "&done_qty=" + numActual + "&refer_qty=" + numDefect);
                     }
                 } else {
@@ -209,7 +209,7 @@ public class FragmentKeyin extends Fragment {
                             numActual = 0;
                         }
 
-                        new docJSONinsertActual().execute("http://117.0.22.171/product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
+                        new docJSONinsertActual().execute("http://ssmes.autonsi.com//product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
                                 + processchon + "&prounit_nm=" + prcunitchon + "&work_ymd=" + datechon + "&prod_sts_cd=" + "A" + "&done_qty=" + numActual + "&refer_qty=" + numDefect);
                     }
                 } else {
@@ -281,7 +281,7 @@ public class FragmentKeyin extends Fragment {
                             numDefect = 0;
                         }
 
-                        new docJSONinsertDefective().execute("http://117.0.22.171/product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
+                        new docJSONinsertDefective().execute("http://ssmes.autonsi.com//product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
                                 + processchon + "&prounit_nm=" + prcunitchon + "&work_ymd=" + datechon + "&prod_sts_cd=" + "D" + "&done_qty=" + numActual + "&refer_qty=" + numDefect);
                     }
                 } else {
@@ -373,8 +373,8 @@ public class FragmentKeyin extends Fragment {
     }
 
     private void GetTimeSever(){
-        new docTimesever().execute("http://117.0.22.171/product/get_time_sever");
-        Log.d("docTimesever","http://117.0.22.171/product/get_time_sever");
+        new docTimesever().execute("http://ssmes.autonsi.com//product/get_time_sever");
+        Log.d("docTimesever","http://ssmes.autonsi.com//product/get_time_sever");
     }
 
     private void DialogActual() {
@@ -393,7 +393,7 @@ public class FragmentKeyin extends Fragment {
                     String numActualString = tvActualNum.getText().toString();
                     numActual = Integer.parseInt(numActualString);
                     numDefect = Integer.parseInt(tvDefectiveNum.getText().toString());
-                    new docJSONinsertActual().execute("http://117.0.22.171/product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
+                    new docJSONinsertActual().execute("http://ssmes.autonsi.com//product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
                             + processchon + "&prounit_nm=" + prcunitchon + "&work_ymd=" + datechon + "&prod_sts_cd=" + "A" + "&done_qty=" + numActual + "&refer_qty=" + numDefect);
 
                     dialog.dismiss();
@@ -438,7 +438,7 @@ public class FragmentKeyin extends Fragment {
                     String numActualString = tvActualNum.getText().toString();
                     numActual = Integer.parseInt(numActualString);
                     numDefect = Integer.parseInt(tvDefectiveNum.getText().toString());
-                    new docJSONinsertDefective().execute("http://117.0.22.171/product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
+                    new docJSONinsertDefective().execute("http://ssmes.autonsi.com//product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
                             + processchon + "&prounit_nm=" + prcunitchon + "&work_ymd=" + datechon + "&prod_sts_cd=" + "D" + "&done_qty=" + numActual + "&refer_qty=" + numDefect);
                     dialog.dismiss();
 
@@ -735,7 +735,7 @@ public class FragmentKeyin extends Fragment {
 
 
         if (KTcauhoi == 0) {
-            new docJSONinsertDefective().execute("http://117.0.22.171/product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
+            new docJSONinsertDefective().execute("http://ssmes.autonsi.com//product/post_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no="
                     + processchon + "&prounit_nm=" + prcunitchon + "&work_ymd=" + datechon + "&prod_sts_cd=" + "D" + "&done_qty=" + numActual + "&refer_qty=" + numDefect);
 
 //                dialogwaiting = new Dialog(getActivity());
@@ -750,7 +750,7 @@ public class FragmentKeyin extends Fragment {
 //                progressBar.setIndeterminateDrawable(circle);
 //                dialogwaiting.show();
         } else {
-            String API = "http://117.0.22.171/product/post_popup_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon +
+            String API = "http://ssmes.autonsi.com//product/post_popup_m_order_facline_day?fo_no=" + WOchon + "&line_no=" + Linechon + "&process_no=" + processchon +
                     "&check_qty=65&check_value=" + insertmaterial + "|" + lookrightpopup + "|" + thecolorpopup.trim() + "|" + thematerialpopup.trim() + "&actual=" + numActual
                     + "&defective=" + numDefect + "&prounit_nm=" + prcunitchon + "&work_ymd=" + datechon;
 

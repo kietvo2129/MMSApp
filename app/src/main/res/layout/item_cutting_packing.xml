@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/No"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/MTCd"
+        android:layout_width="200dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/MLNo"
+        android:layout_width="550dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/GroupQty"
+        android:layout_width="150dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/MTNo"
+        android:layout_width="300dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/Type"
+        android:layout_width="200dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/Status"
+        android:layout_width="200dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/Location"
+        android:layout_width="200dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/LocationStatus"
+        android:layout_width="200dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/Departure"
+        android:layout_width="200dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/Destination"
+        android:layout_width="200dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/BobbinNo"
+        android:layout_width="200dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/Description"
+        android:layout_width="200dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/MTName"
+        android:layout_width="300dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/OriginMLNo"
+        android:layout_width="500dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/CreateName"
+        android:layout_width="200dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/CreateDate"
+        android:layout_width="200dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/ChangeName"
+        android:layout_width="200dp"
+
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/ChangeDate"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#FFF" />
+
+
+</LinearLayout>

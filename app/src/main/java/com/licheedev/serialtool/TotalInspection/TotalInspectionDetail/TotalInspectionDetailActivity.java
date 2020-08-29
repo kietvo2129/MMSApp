@@ -67,8 +67,8 @@ public class TotalInspectionDetailActivity extends AppCompatActivity {
         btn_Visual = findViewById(R.id.btn_Visual);
         btn_Thickness = findViewById(R.id.btn_Thickness);
 
-   //     new ReadJSON().execute("http://117.0.22.171/TotalInspection/get_PP_detail?fo_no=" + WOchon);
-    //    Log.d("Total inspection detail", "http://117.0.22.171/TotalInspection/get_PP_detail?fo_no=" + WOchon);
+   //     new ReadJSON().execute("http://ssmes.autonsi.com//TotalInspection/get_PP_detail?fo_no=" + WOchon);
+    //    Log.d("Total inspection detail", "http://ssmes.autonsi.com//TotalInspection/get_PP_detail?fo_no=" + WOchon);
         lvds.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -119,11 +119,11 @@ public class TotalInspectionDetailActivity extends AppCompatActivity {
     public void finish_click(View view) {
         int vitri = lvds.getPositionForView(view);
         if (!totalInspectionDetailMasterArrayList.get(vitri).getSts().equals("Finish")) {
-            new ReadJSONfinish().execute("http://117.0.22.171/TotalInspection/update_btn_finish?pno=" +
+            new ReadJSONfinish().execute("http://ssmes.autonsi.com//TotalInspection/update_btn_finish?pno=" +
                     totalInspectionDetailMasterArrayList.get(vitri).getPno() +
                     "&insp_yn=" +
                     "Y");
-            Log.d("Totalinspectionfinnish", "http://117.0.22.171/TotalInspection/update_btn_finish?pno=" +
+            Log.d("Totalinspectionfinnish", "http://ssmes.autonsi.com//TotalInspection/update_btn_finish?pno=" +
                     totalInspectionDetailMasterArrayList.get(vitri).getPno() +
                     "&insp_yn=" +
                     "Y");
@@ -212,13 +212,13 @@ public class TotalInspectionDetailActivity extends AppCompatActivity {
                     input.setFocusable(true);
                     return;
                 } else {
-                    // http://117.0.22.171/TotalInspection/update_btn_save?pno=1&gr_qty=10
+                    // http://ssmes.autonsi.com//TotalInspection/update_btn_save?pno=1&gr_qty=10
 
-                    new ReadJSONfinish().execute("http://117.0.22.171/TotalInspection/update_btn_save?pno=" +
+                    new ReadJSONfinish().execute("http://ssmes.autonsi.com//TotalInspection/update_btn_save?pno=" +
                             totalInspectionDetailMasterArrayList.get(vitri).getPno() +
                             "&gr_qty=" +
                             bbCode);
-                    Log.d("Totalinspectionsave", "http://117.0.22.171/TotalInspection/update_btn_save?pno=" +
+                    Log.d("Totalinspectionsave", "http://ssmes.autonsi.com//TotalInspection/update_btn_save?pno=" +
                             totalInspectionDetailMasterArrayList.get(vitri).getPno() +
                             "&gr_qty=" +
                             bbCode);
@@ -246,13 +246,13 @@ public class TotalInspectionDetailActivity extends AppCompatActivity {
 //                } else if (Integer.parseInt(bbCode) > finalMaximum) {
 //                    AlertNotExist ("Maximum = " + finalMaximum);
 //                } else {
-//                    // http://117.0.22.171/TotalInspection/update_btn_save?pno=1&gr_qty=10
+//                    // http://ssmes.autonsi.com//TotalInspection/update_btn_save?pno=1&gr_qty=10
 //
-//                    new ReadJSONfinish().execute("http://117.0.22.171/TotalInspection/update_btn_save?pno=" +
+//                    new ReadJSONfinish().execute("http://ssmes.autonsi.com//TotalInspection/update_btn_save?pno=" +
 //                            totalInspectionDetailMasterArrayList.get(vitri).getPno() +
 //                            "&gr_qty=" +
 //                            bbCode);
-//                    Log.d("Totalinspectionsave", "http://117.0.22.171/TotalInspection/update_btn_save?pno=" +
+//                    Log.d("Totalinspectionsave", "http://ssmes.autonsi.com//TotalInspection/update_btn_save?pno=" +
 //                            totalInspectionDetailMasterArrayList.get(vitri).getPno() +
 //                            "&gr_qty=" +
 //                            bbCode);
@@ -302,8 +302,8 @@ public class TotalInspectionDetailActivity extends AppCompatActivity {
                 String Trave = object.getString("result");
                 if (Trave.equals("true")) {
                     //Toast.makeText(TotalInspectionDetailActivity.this, "OKE", Toast.LENGTH_SHORT).show();
-                    new ReadJSON().execute("http://117.0.22.171/TotalInspection/get_PP_detail?fo_no=" + WOchon);
-                    Log.d("Total inspection detail", "http://117.0.22.171/TotalInspection/get_PP_detail?fo_no=" + WOchon);
+                    new ReadJSON().execute("http://ssmes.autonsi.com//TotalInspection/get_PP_detail?fo_no=" + WOchon);
+                    Log.d("Total inspection detail", "http://ssmes.autonsi.com//TotalInspection/get_PP_detail?fo_no=" + WOchon);
                 } else {
                     Toast.makeText(TotalInspectionDetailActivity.this, "Sever disconnected", Toast.LENGTH_SHORT).show();
                 }
@@ -399,8 +399,8 @@ public class TotalInspectionDetailActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        new ReadJSON().execute("http://117.0.22.171/TotalInspection/get_PP_detail?fo_no=" + WOchon);
-        Log.d("Total inspection detail", "http://117.0.22.171/TotalInspection/get_PP_detail?fo_no=" + WOchon);
+        new ReadJSON().execute("http://ssmes.autonsi.com//TotalInspection/get_PP_detail?fo_no=" + WOchon);
+        Log.d("Total inspection detail", "http://ssmes.autonsi.com//TotalInspection/get_PP_detail?fo_no=" + WOchon);
     }
 
 }
