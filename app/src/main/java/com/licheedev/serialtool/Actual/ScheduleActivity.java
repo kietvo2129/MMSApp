@@ -3,6 +3,7 @@ package com.licheedev.serialtool.Actual;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.Home.HomeAdapter;
 import com.licheedev.serialtool.Home.HomeFragment;
 import com.licheedev.serialtool.Home.HomeItem;
@@ -45,7 +47,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private ProgressDialog dialog;
-
+    String ulrweb = DMActivity.ulrweb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +75,7 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private void getData() {
-        new ReadJSON().execute("http://ssmes.autonsi.com//product/get_list_day_schedule?fo_no=" +
+        new ReadJSON().execute(ulrweb+"product/get_list_day_schedule?fo_no=" +
                 WOchon +
                 "&line_no=" +
                 Linechon +
@@ -81,7 +83,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 process_nochon +
                 "&process_nm=" +
                 processnamechon);
-        Log.d("ReadJSON", "http://ssmes.autonsi.com//product/get_list_day_schedule?fo_no=" +
+        Log.d("ReadJSON", ulrweb+"product/get_list_day_schedule?fo_no=" +
                 WOchon +
                 "&line_no=" +
                 Linechon +
@@ -178,11 +180,11 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                new JsonUpdate().execute("http://ssmes.autonsi.com//product/Update_Schedule_qty?olddno="
+                new JsonUpdate().execute(ulrweb+"product/Update_Schedule_qty?olddno="
                         + mHomeList.get(position).getHomemno() +
                         "&schedule=" +
                         input.getText().toString().trim());
-                Log.d("JsonUpdate", "http://ssmes.autonsi.com//product/Update_Schedule_qty?olddno="
+                Log.d("JsonUpdate", ulrweb+"product/Update_Schedule_qty?olddno="
                         + mHomeList.get(position).getHomemno() +
                         "&schedule=" +
                         input.getText().toString().trim());

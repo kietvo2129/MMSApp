@@ -1,5 +1,6 @@
 package com.licheedev.serialtool;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,10 +8,12 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -35,7 +38,7 @@ import java.net.URLConnection;
 
 public class DMActivity extends AppCompatActivity{
 
-    TextView btnsignup,aaaaa;
+    TextView btnsignup,tv_urlweb;
     EditText edtuser;
     EditText edtpass;
     CheckBox check;
@@ -45,22 +48,39 @@ public class DMActivity extends AppCompatActivity{
     String chuoitrave;
     private long back;
     private Toast backToast;
+    public static String ulrweb ="";
 
+    SharedPreferences luu_Url;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dm);
-
         sharedPreferences = getSharedPreferences("datalogin", MODE_PRIVATE);
+
+        luu_Url = getSharedPreferences("dataUrl", MODE_PRIVATE);
+        ulrweb = luu_Url.getString("url","http://192.168.1.253:80/");
+
         Anhxa();
         edtuser.setText(sharedPreferences.getString("TK",""));
         edtpass.setText(sharedPreferences.getString("MK",""));
         check.setChecked(sharedPreferences.getBoolean("checked", false));
 
+        String url = luu_Url.getString("url","http://192.168.1.253:80/");
+        tv_urlweb.setText(url);
+        tv_urlweb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                showChangeUrl();
+
+            }
+        });
+
+
         findViewById(R.id.logo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DMActivity.this, "http://ssmes.autonsi.com/", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DMActivity.this, ulrweb+"", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -76,10 +96,10 @@ public class DMActivity extends AppCompatActivity{
 
                         user = edtuser.getText().toString();
                         pass = edtpass.getText().toString();
-                        Log.d("Login","http://ssmes.autonsi.com//Product/" + "Login?" + "user=" + user + "&password=" + pass+"&type=" + "MMS");
+                        Log.d("Login",ulrweb+"Product/" + "Login?" + "user=" + user + "&password=" + pass+"&type=" + "MMS");
                         if(user.length()>0&&pass.length()>0){
                             //Toast.makeText(DMActivity.this, "Logging in to the system", Toast.LENGTH_SHORT).show();
-                            new docJSON().execute("http://ssmes.autonsi.com//Product/" + "Login?" + "user=" + user + "&password=" + pass+"&type=" + "MMS");/// gui du lieu len server
+                            new docJSON().execute(ulrweb+"Product/" + "Login?" + "user=" + user + "&password=" + pass+"&type=" + "MMS");/// gui du lieu len server
                         }else{
                             Toast.makeText(DMActivity.this, "Complete user and password", Toast.LENGTH_SHORT).show();
                         }
@@ -88,6 +108,32 @@ public class DMActivity extends AppCompatActivity{
             }
         });
     }
+    private void showChangeUrl() {
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(DMActivity.this, android.R.layout.select_dialog_singlechoice);
+        AlertDialog.Builder builderSingle = new AlertDialog.Builder(DMActivity.this);
+        builderSingle.setTitle("Select One Line:");
+        arrayAdapter.add("http://192.168.1.253:80/");
+        arrayAdapter.add("http://192.168.1.251:83/");
+        builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                ulrweb = arrayAdapter.getItem(i);
+                tv_urlweb.setText(arrayAdapter.getItem(i));
+                SharedPreferences.Editor editor = luu_Url.edit();
+                editor.putString("url",arrayAdapter.getItem(i));
+                editor.commit();
+                dialog.dismiss();
+            }
+        });
+        builderSingle.show();
+    }
+
     class docJSON extends AsyncTask<String, Integer, String> {
 
         @Override
@@ -182,6 +228,7 @@ public class DMActivity extends AppCompatActivity{
         edtuser     =  findViewById(R.id.edtuser);
         edtpass     =  findViewById(R.id.edtpass);
         check       =  findViewById(R.id.check);
+        tv_urlweb =  findViewById(R.id.tv_urlweb);
     }
     private void Canhbaoloi(String text) {
         android.support.v7.app.AlertDialog.Builder alertDialog = new android.support.v7.app.AlertDialog.Builder(this);

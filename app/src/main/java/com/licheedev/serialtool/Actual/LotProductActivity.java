@@ -49,6 +49,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.google.zxing.qrcode.QRCodeWriter;
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.MainLayout;
 import com.licheedev.serialtool.Product.ProductMaster;
 import com.licheedev.serialtool.Product.ProductMasterAdaptor;
@@ -127,7 +128,7 @@ public class LotProductActivity extends AppCompatActivity {
     String index, style_no, level;
 
     String Timesever = "00000000000000";
-
+String ulrweb = DMActivity.ulrweb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -282,7 +283,7 @@ public class LotProductActivity extends AppCompatActivity {
                     Toast.makeText(LotProductActivity.this, "Data incorrect!!!", Toast.LENGTH_SHORT).show();
                 } else {
                     // if (GroupQty.length() != 0) {
-                    new docJSONtaomoi().execute("http://ssmes.autonsi.com//Lot/Creat_row?wo_no=" +
+                    new docJSONtaomoi().execute(ulrweb+"Lot/Creat_row?wo_no=" +
                             WOchon +
                             "&gr_qty=" +
                             0 + //GroupQtynum
@@ -298,7 +299,7 @@ public class LotProductActivity extends AppCompatActivity {
                             index +
                             "&style_no=" +
                             style_no + "&bom_no=" + bom_no + "&level=" + level);
-                    Log.d("taomoi", "http://ssmes.autonsi.com//Lot/Creat_row?wo_no=" +
+                    Log.d("taomoi", ulrweb+"Lot/Creat_row?wo_no=" +
                             WOchon +
                             "&gr_qty=" +
                             0 + //GroupQtynum
@@ -335,8 +336,8 @@ public class LotProductActivity extends AppCompatActivity {
     }
 
     private void GetTimeSever() {
-        new docTimesever().execute("http://ssmes.autonsi.com//product/get_time_sever");
-        Log.d("docTimesever", "http://ssmes.autonsi.com//product/get_time_sever");
+        new docTimesever().execute(ulrweb+"product/get_time_sever");
+        Log.d("docTimesever", ulrweb+"product/get_time_sever");
     }
 
     class docTimesever extends AsyncTask<String, Integer, String> {
@@ -645,9 +646,9 @@ public class LotProductActivity extends AppCompatActivity {
             // TODO 15/05/2020//
 
             if (bbNo.length() > 0 && idWm.length() > 0) {
-                new jsonMapping().execute("http://ssmes.autonsi.com//ActualWO/Mapping_bb_api_buyer?prd_lcd=" + idWm +
+                new jsonMapping().execute(ulrweb+"ActualWO/Mapping_bb_api_buyer?prd_lcd=" + idWm +
                         "&buyer_qr=" + bbNo);
-                Log.d("Bobbing", "http://ssmes.autonsi.com//ActualWO/Mapping_bb_api_buyer?prd_lcd=" + idWm +
+                Log.d("Bobbing", ulrweb+"ActualWO/Mapping_bb_api_buyer?prd_lcd=" + idWm +
                         "&buyer_qr=" + bbNo);
             } else {
                 Toast.makeText(LotProductActivity.this, "Please insert \"Bobbin code\" and select \"Lot code\"", Toast.LENGTH_LONG).show();
@@ -738,7 +739,7 @@ public class LotProductActivity extends AppCompatActivity {
 //
 //
 //        int position = (int) view.getTag();
-//        String url = "http://ssmes.autonsi.com//ActualWO/Xoa_mt_pp_product?id="+ productMasterArrayList.get(position).getWmtid();
+
 //        new jsonDelete().execute(url);
 //        Log.d("jsonDelete",url);
 //    }
@@ -1032,11 +1033,11 @@ public class LotProductActivity extends AppCompatActivity {
     }
 
     private void getdata() {
-        new docJSONData().execute("http://ssmes.autonsi.com//Lot/getmt_date_web?wo_no=" +
+        new docJSONData().execute(ulrweb+"Lot/getmt_date_web?wo_no=" +
                 WOchon + "&prounit_cd=" + ProcessChon + "&date=" + Datechon + "&pr_nm=" +
                 ProcessnameChon + "&index=" + index + "&style_no=" + style_no + "&bom_no=" + bom_no + "&level=" + level);
 
-        Log.d("lay data", "http://ssmes.autonsi.com//Lot/getmt_date_web?wo_no=" +
+        Log.d("lay data", ulrweb+"Lot/getmt_date_web?wo_no=" +
                 WOchon + "&prounit_cd=" + ProcessChon + "&date=" + Datechon + "&pr_nm=" +
                 ProcessnameChon + "&index=" + index + "&style_no=" + style_no + "&bom_no=" + bom_no + "&level=" + level);
 

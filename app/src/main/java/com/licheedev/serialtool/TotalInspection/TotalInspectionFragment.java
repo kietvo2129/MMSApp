@@ -1,7 +1,9 @@
 package com.licheedev.serialtool.TotalInspection;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.R;
 import com.licheedev.serialtool.TotalInspection.TotalInspectionDetail.TotalInspectionDetailActivity;
 
@@ -39,7 +42,7 @@ public class TotalInspectionFragment extends Fragment {
     TotalIspectionMasterAdaptor totalIspectionMasterAdaptor;
     ListView lvds;
     public static String WOchon, Productchon;
-
+String ulrweb = DMActivity.ulrweb;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,8 +51,6 @@ public class TotalInspectionFragment extends Fragment {
 
         lvds = view.findViewById(R.id.lvDanhSanh);
 
-      //  new ReadJSON().execute("http://ssmes.autonsi.com//TotalInspection/getIns_list_ProInfo");
-     //   Log.d("Total inspection","http://ssmes.autonsi.com//TotalInspection/getIns_list_ProInfo");
         lvds.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -177,8 +178,8 @@ public class TotalInspectionFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        new ReadJSON().execute("http://ssmes.autonsi.com//TotalInspection/getIns_list_ProInfo");
-        Log.d("Total inspection","http://ssmes.autonsi.com//TotalInspection/getIns_list_ProInfo");
+        new ReadJSON().execute(ulrweb+"TotalInspection/getIns_list_ProInfo");
+        Log.d("Total inspection",ulrweb+"TotalInspection/getIns_list_ProInfo");
     }
 
 

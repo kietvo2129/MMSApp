@@ -3,6 +3,7 @@ package com.licheedev.serialtool.Product;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.licheedev.serialtool.Actual.ActualFragment;
 import com.licheedev.serialtool.Actual.LotCompositeActivity;
 import com.licheedev.serialtool.Actual.LotProductActivity;
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.OQC.OQCFragment;
 import com.licheedev.serialtool.PQC.PQCFragment;
 import com.licheedev.serialtool.QC_check.OQC;
@@ -46,6 +48,8 @@ public class ProductMasterAdaptor extends BaseAdapter {
     String Linechon = ActualFragment.Linechon;
     String Ma_QC_Code;
     int bbCodenum;
+
+    String ulrweb = DMActivity.ulrweb;
 
     public ProductMasterAdaptor(Context context, int layout, List<ProductMaster> productMasters) {
         this.context = context;
@@ -169,19 +173,17 @@ public class ProductMasterAdaptor extends BaseAdapter {
                             //productMaster.setGr_qty(bbCode);
                             productMasters.get(position).setGr_qty(bbCodenum + "");
                             notifyDataSetChanged();
-//                            Toast.makeText(context, "" + productMaster.getWmtid(), Toast.LENGTH_SHORT).show();
-//                            http://ssmes.autonsi.com//Lot/update_w_material_gr_api?gr_qty=50&id=1221
                             if (level.equals("last")) {
-                                new docJSONchinhsua().execute("http://ssmes.autonsi.com//Lot/update_w_material_gr_api?gr_qty=" +
+                                new docJSONchinhsua().execute(ulrweb+"Lot/update_w_material_gr_api?gr_qty=" +
                                         bbCodenum + "&id=" + productMaster.getWmtid() + "&level=" + level);
                                 dialog.cancel();
-                                Log.d("chinh sua", "http://ssmes.autonsi.com//Lot/update_w_material_gr_api?gr_qty=" +
+                                Log.d("chinh sua", ulrweb+"Lot/update_w_material_gr_api?gr_qty=" +
                                         bbCodenum + "&id=" + productMaster.getWmtid() + "&level=" + level);
                             } else {
-                                new docJSONchinhsua().execute("http://ssmes.autonsi.com//Lot/update_w_material_gr_api?gr_qty=" +
+                                new docJSONchinhsua().execute(ulrweb+"Lot/update_w_material_gr_api?gr_qty=" +
                                         bbCodenum + "&id=" + productMaster.getWmtid() + "&level=" + level + "&line_no=" + Linechon + "&fo_no=" + WOchon);
                                 dialog.cancel();
-                                Log.d("chinh sua", "http://ssmes.autonsi.com//Lot/update_w_material_gr_api?gr_qty=" +
+                                Log.d("chinh sua", ulrweb+"Lot/update_w_material_gr_api?gr_qty=" +
                                         bbCodenum + "&id=" + productMaster.getWmtid() + "&level=" + level + "&line_no=" + Linechon + "&fo_no=" + WOchon);
                             }
                         }

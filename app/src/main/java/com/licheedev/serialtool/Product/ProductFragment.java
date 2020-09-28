@@ -50,6 +50,7 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.R;
 import com.licheedev.serialtool.utils.AidlUtil;
 import com.licheedev.serialtool.utils.ESCUtil;
@@ -91,8 +92,8 @@ public class ProductFragment extends Fragment {
     TextView buttonCreating;
     ListView lvDanhSanhproduct;
     private int vitri = -1;
-
-    String API_MAPPING = "http://ssmes.autonsi.com//Lot/maping_code_bb?bb_no="; //BB000000001&wmtid=1123";
+    String ulrweb = DMActivity.ulrweb;
+    String API_MAPPING = ulrweb+ "Lot/maping_code_bb?bb_no="; //BB000000001&wmtid=1123";
     String API_MAPPING1 = "&wmtid=";
 
     @Nullable
@@ -147,7 +148,7 @@ public class ProductFragment extends Fragment {
             }
         });
 
-        new docJSONwo().execute("http://ssmes.autonsi.com//Lot/selec_wo");
+        new docJSONwo().execute(ulrweb+ "Lot/selec_wo");
 
         buttonCreating.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,7 +166,7 @@ public class ProductFragment extends Fragment {
                 }else {
                     if (GroupQty.length() != 0) {
                         if (QRQtynum.length() != 0) {
-                            new docJSONData().execute("http://ssmes.autonsi.com//Lot/Creat_row?wo_no=" +
+                            new docJSONData().execute(ulrweb+ "Lot/Creat_row?wo_no=" +
                                     WOchon +
                                     "&qr_qty=" +
                                     QRQtynum +
@@ -410,7 +411,7 @@ public class ProductFragment extends Fragment {
 
                 WOchon = arrayLineWO.get(position);
 
-                new docJSONline().execute("http://ssmes.autonsi.com//Lot/return_line_pro?wo=" + WOchon);
+                new docJSONline().execute(ulrweb+ "Lot/return_line_pro?wo=" + WOchon);
 
             }
 
@@ -477,7 +478,7 @@ public class ProductFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
 
                 ProcessChon = arrayLineProcessCD.get(position);
-                new docJSONDate().execute("http://ssmes.autonsi.com//Lot/return_date?wo=" +
+                new docJSONDate().execute(ulrweb+ "Lot/return_date?wo=" +
                         WOchon +
                         "&prounit_cd=" +
                         ProcessChon);
@@ -526,8 +527,6 @@ public class ProductFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
 
                 Datechon = arrayLineDateCD.get(position);
-                //Toast.makeText(getActivity(), "" + Datechon, Toast.LENGTH_SHORT).show();
-                // http://ssmes.autonsi.com//Lot/Creat_row?wo_no=W0000000016&qr_qty=1&gr_qty=30&prounit_cd=CUT002&date=20191005&line_no=LN00020
 
             }
 

@@ -3,6 +3,7 @@ package com.licheedev.serialtool.QC_check;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,7 @@ import android.widget.Toast;
 import com.licheedev.serialtool.Actual.ActualFragment;
 import com.licheedev.serialtool.Actual.FragmentKeyin;
 import com.licheedev.serialtool.Actual.LotCompositeActivity;
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.Product.ProductMaster;
 import com.licheedev.serialtool.Product.ProductMasterAdaptor;
 import com.licheedev.serialtool.R;
@@ -67,7 +69,7 @@ public class PQC extends AppCompatActivity {
     EditText tv_qcheck_checkqty, tv_qcheck_okcheck;
     TextView tv_qcheck_defectqty;
     String numActual = FragmentKeyin.numActualsend;
-
+String ulrweb = DMActivity.ulrweb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +99,7 @@ public class PQC extends AppCompatActivity {
 
     private void LoadQcListAgain() {
 
-        String url2 = "http://ssmes.autonsi.com//product/GetDataFaclineQc?item_vcd=" + Ma_QC_Code + "&olddno=" + olddnochon;
+        String url2 = ulrweb+ "product/GetDataFaclineQc?item_vcd=" + Ma_QC_Code + "&olddno=" + olddnochon;
         Log.d("PQC_getData", url2);
 
         new LoadQcList().execute(url2);
@@ -230,7 +232,7 @@ public class PQC extends AppCompatActivity {
                     ITEM_MQ_HNO_S = ITEM_MQ_HNO_S.substring(1, ITEM_MQ_HNO_S.length());
                     ITEM_CHECK_QTY_S = ITEM_CHECK_QTY_S.substring(1, ITEM_CHECK_QTY_S.length());
 
-                    String url = "http://ssmes.autonsi.com//product/Update_m_facline_qc_value?fqno=" + ITEM_MQNO +
+                    String url = ulrweb+ "product/Update_m_facline_qc_value?fqno=" + ITEM_MQNO +
                             "&fqhno=" + ITEM_MQ_HNO_S + "&check_qty=" + ITEM_CHECK_QTY_S;
 
                     //Toast.makeText(getActivity(), url, Toast.LENGTH_SHORT).show();
@@ -260,7 +262,7 @@ public class PQC extends AppCompatActivity {
         recyclerViewDetail = dialogView.findViewById(R.id.recycler_view_qc_check_qc_detail);
         qcDetailItem = new ArrayList<>();
 
-        String url = "http://ssmes.autonsi.com//product/GetDataFaclineQc_detail?fq_no=" + qcitem.get(position).getMq_no();
+        String url = ulrweb+ "product/GetDataFaclineQc_detail?fq_no=" + qcitem.get(position).getMq_no();
 
 
         new LoadQcDetail().execute(url);
@@ -652,7 +654,7 @@ public class PQC extends AppCompatActivity {
 
                         numActual = Integer.parseInt(numActual) - Integer.parseInt(tv_qcheck_defectqty.getText().toString())+"";
 
-                        String url = "http://ssmes.autonsi.com//product" /*HostSV*/ +
+                        String url = ulrweb+ "product" /*HostSV*/ +
                                 "/Insert_FaclineQc?oldhno=" + olddnochon +
                                 "&item_vcd=" + Ma_QC_Code +
                                 "&check_qty=" + tv_qcheck_checkqty.getText().toString().trim() +
@@ -689,7 +691,7 @@ public class PQC extends AppCompatActivity {
 
                             numActual = Integer.parseInt(numActual) - Integer.parseInt(tv_qcheck_defectqty.getText().toString())+"";
 
-                            String url = "http://ssmes.autonsi.com//product" /*HostSV*/ +
+                            String url = ulrweb+ "product" /*HostSV*/ +
                                     "/Insert_FaclineQc?oldhno=" + olddnochon +
                                     "&item_vcd=" + Ma_QC_Code +
                                     "&check_qty=" + tv_qcheck_checkqty.getText().toString().trim() +
@@ -720,7 +722,7 @@ public class PQC extends AppCompatActivity {
             }
         });
 
-        String url = "http://ssmes.autonsi.com//product/Popup_Qc_Check?item_vcd=" + Ma_QC_Code;
+        String url =ulrweb+  "product/Popup_Qc_Check?item_vcd=" + Ma_QC_Code;
 
         Log.d("QC_menu_Check", url);
         //LoadCheckQc(url);

@@ -60,6 +60,7 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.MenuModel;
 import com.licheedev.serialtool.QC_check.PQC;
 import com.licheedev.serialtool.activity.base.BaseActivity;
@@ -97,8 +98,6 @@ import java.util.Locale;
 import ja.burhanrashid52.photoeditor.OnSaveBitmap;
 import ja.burhanrashid52.photoeditor.PhotoEditor;
 import ja.burhanrashid52.photoeditor.PhotoEditorView;
-import woyou.aidlservice.jiuiv5.IWoyouService;
-
 public class LotCompositeActivity extends BaseActivity {
 
     public static final int CONNECT_DEVICE = 1;
@@ -120,7 +119,8 @@ public class LotCompositeActivity extends BaseActivity {
     int kiemtra = 0;
     TextView chonchedo;
 
-    String API_MAPPING = "http://ssmes.autonsi.com//Lot/maping_code_bb?bb_no="; //BB000000001&wmtid=1123";
+String ulrweb = DMActivity.ulrweb;
+    String API_MAPPING = ulrweb + "Lot/maping_code_bb?bb_no="; //BB000000001&wmtid=1123";
     String API_MAPPING1 = "&wmtid=";
 
     private boolean mOpened = false;
@@ -132,7 +132,6 @@ public class LotCompositeActivity extends BaseActivity {
     private Context mContext;
     private ProgressDialog dialog;
     private boolean showUSB;
-    private IWoyouService woyouService;
     SharedPreferences sharedPreferences;
 
     String DCMac;
@@ -249,8 +248,6 @@ public class LotCompositeActivity extends BaseActivity {
         getdata();
 
         /////////////////
-//        new docJSONdata_them().execute("http://ssmes.autonsi.com//Lot/return_mp_mt_line?wo="+ WOchon);
-//        Log.d("AAAA","http://ssmes.autonsi.com//Lot/return_mp_mt_line?wo="+ WOchon);
 
 
         ////////////////
@@ -306,7 +303,7 @@ public class LotCompositeActivity extends BaseActivity {
                     Toast.makeText(LotCompositeActivity.this, "Data incorrect!!!", Toast.LENGTH_SHORT).show();
                 } else {
               //      if (GroupQty.length() != 0) {
-                        new docJSONtaomoi().execute("http://ssmes.autonsi.com//Lot/Creat_row?wo_no=" +
+                        new docJSONtaomoi().execute(ulrweb + "Lot/Creat_row?wo_no=" +
                                 WOchon +
                                 "&gr_qty=" +
                                 0 + //GroupQtynum
@@ -322,7 +319,7 @@ public class LotCompositeActivity extends BaseActivity {
                                 index +
                                 "&style_no=" +
                                 style_no + "&bom_no=" + bom_no + "&level=" + level);
-                        Log.d("taomoi", "http://ssmes.autonsi.com//Lot/Creat_row?wo_no=" +
+                        Log.d("taomoi", ulrweb + "Lot/Creat_row?wo_no=" +
                                 WOchon +
                                 "&gr_qty=" +
                                 0 + //GroupQtynum
@@ -380,7 +377,6 @@ public class LotCompositeActivity extends BaseActivity {
 //
 //
 //        int position = (int) view.getTag();
-//        String url = "http://ssmes.autonsi.com//ActualWO/Xoa_mt_pp_composite?id="+ productMasterArrayList.get(position).getWmtid();
 //        new jsonDelete().execute(url);
 //        Log.d("jsonDelete",url);
 //    }
@@ -1242,11 +1238,11 @@ public class LotCompositeActivity extends BaseActivity {
     }
 
     private void getdata() {
-        new docJSONData().execute("http://ssmes.autonsi.com//Lot/getmt_date_web?wo_no=" +
+        new docJSONData().execute(ulrweb + "Lot/getmt_date_web?wo_no=" +
                 WOchon + "&prounit_cd=" + ProcessChon + "&date=" + Datechon + "&pr_nm=" +
                 ProcessnameChon + "&index=" + index + "&style_no=" + style_no + "&bom_no=" + bom_no + "&level=" + level + "&process_no="+ process_nochon+ "&line_no=" +line_nochon);
 
-        Log.d("lay data", "http://ssmes.autonsi.com//Lot/getmt_date_web?wo_no=" +
+        Log.d("lay data", ulrweb + "Lot/getmt_date_web?wo_no=" +
                 WOchon + "&prounit_cd=" + ProcessChon + "&date=" + Datechon + "&pr_nm=" +
                 ProcessnameChon + "&index=" + index + "&style_no=" + style_no + "&bom_no=" + bom_no + "&level=" + level + "&process_no="+ process_nochon+ "&line_no=" +line_nochon);
 

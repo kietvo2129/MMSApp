@@ -2,6 +2,7 @@ package com.licheedev.serialtool.TotalInspection.TotalInspectionDetail.Visual;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.R;
 import com.licheedev.serialtool.TotalInspection.TotalInspectionDetail.Thinkness.QcCheckThinknessAdapter;
 import com.licheedev.serialtool.TotalInspection.TotalInspectionDetail.Thinkness.QcCheckThinknessItem;
@@ -50,7 +52,7 @@ public class VisualActivity extends AppCompatActivity {
     QcCheckThinknessAdapter qcCheckThinknessAdapter;
     private RecyclerView listViewCheck;
     int maximum=0;
-
+String ulrweb = DMActivity.ulrweb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +73,8 @@ public class VisualActivity extends AppCompatActivity {
     }
 
     private void loaddata() {
-        new getData().execute("http://ssmes.autonsi.com//TotalInspection/list_data_visual?pno=" + idPLno);
-        Log.d("getData", "http://ssmes.autonsi.com//TotalInspection/list_data_visual?pno=" + idPLno);
+        new getData().execute(ulrweb+"TotalInspection/list_data_visual?pno=" + idPLno);
+        Log.d("getData", ulrweb+"TotalInspection/list_data_visual?pno=" + idPLno);
     }
 
     private class getData extends AsyncTask<String, Void, String> {
@@ -357,8 +359,8 @@ public class VisualActivity extends AppCompatActivity {
                 if (numOk == 0 && numDefecty ==0){
 
                 }else {
-                    new SaveData_Check().execute("http://ssmes.autonsi.com//TotalInspection/save_thickness_visual?pino=" + idPLno + "&ti_cd=" + "TI0002" + "&ok_qty=" + numOk + "&def_qty=" + numDefecty);
-                    Log.d("SaveData_Check", "http://ssmes.autonsi.com//TotalInspection/save_thickness_visual?pino=" + idPLno + "&ti_cd=" + "TI0002" + "&ok_qty=" + numOk + "&def_qty=" + numDefecty);
+                    new SaveData_Check().execute(ulrweb+"TotalInspection/save_thickness_visual?pino=" + idPLno + "&ti_cd=" + "TI0002" + "&ok_qty=" + numOk + "&def_qty=" + numDefecty);
+                    Log.d("SaveData_Check", ulrweb+"TotalInspection/save_thickness_visual?pino=" + idPLno + "&ti_cd=" + "TI0002" + "&ok_qty=" + numOk + "&def_qty=" + numDefecty);
                     alertDialog.dismiss();
                 }
 

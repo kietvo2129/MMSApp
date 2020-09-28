@@ -1,8 +1,10 @@
 package com.licheedev.serialtool.Composite;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -29,6 +31,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.google.zxing.qrcode.QRCodeWriter;
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.Product.ProductMaster;
 import com.licheedev.serialtool.Product.ProductMasterAdaptor;
 import com.licheedev.serialtool.R;
@@ -53,7 +56,7 @@ public class CompositeFragment extends Fragment {
     final ArrayList<String> arrayLineFactory = new ArrayList<String>();
     final ArrayList<String> arrayLineDateNM = new ArrayList<String>();
     String WOchon, ProcessChon, Datechon, GroupQtynum, QRQtynum;
-
+    String ulrweb = DMActivity.ulrweb;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,7 +66,7 @@ public class CompositeFragment extends Fragment {
         spinnerPro = view.findViewById(R.id.spinnerPro);
         spinnerDate = view.findViewById(R.id.spinnerDate);
 
-        new docJSONwo().execute("http://ssmes.autonsi.com//Lot/selec_wo");
+        new docJSONwo().execute(ulrweb+"Lot/selec_wo");
 
         return view;
     }
@@ -102,7 +105,7 @@ public class CompositeFragment extends Fragment {
 
                 WOchon = arrayLineWO.get(position);
 
-                new docJSONline().execute("http://ssmes.autonsi.com//product/return_line_pro?wo=" + WOchon);
+                new docJSONline().execute(ulrweb+"product/return_line_pro?wo=" + WOchon);
 
             }
 

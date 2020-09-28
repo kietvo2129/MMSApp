@@ -3,7 +3,9 @@ package com.licheedev.serialtool.Status;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -27,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.Home.HomeItem;
 import com.licheedev.serialtool.QC_check.PQC;
 import com.licheedev.serialtool.R;
@@ -66,7 +69,7 @@ public class StatusFragment extends Fragment implements SearchView.OnQueryTextLi
     int vitrispchon = 0;
     private ProgressDialog dialog;
     TextView NoPlan,Stop,Repair,ChangeOver,Working,all;
-
+    String ulrweb = DMActivity.ulrweb;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -137,8 +140,8 @@ public class StatusFragment extends Fragment implements SearchView.OnQueryTextLi
     }
 
     private void LoadData() {
-        new ReadJSON().execute("http://ssmes.autonsi.com//DashBoardQC/Get_DataFactoryStatus_API");
-        Log.d("Read data", "http://ssmes.autonsi.com//DashBoardQC/Get_DataFactoryStatus_API");
+        new ReadJSON().execute(ulrweb+"DashBoardQC/Get_DataFactoryStatus_API");
+        Log.d("Read data", ulrweb+"DashBoardQC/Get_DataFactoryStatus_API");
 
     }
 
@@ -288,11 +291,11 @@ public class StatusFragment extends Fragment implements SearchView.OnQueryTextLi
                 } else {
 
 
-                    new readJsonSave().execute("http://ssmes.autonsi.com//DashBoardQC/UpdateStatus_API?prounit_cd=" + statusMasters.get(position).getProunit_cd() +
+                    new readJsonSave().execute(ulrweb+"DashBoardQC/UpdateStatus_API?prounit_cd=" + statusMasters.get(position).getProunit_cd() +
                             "&process_sts_cd=" +
                             StatusListid.get(vitrispchon));
 
-                    Log.d("readJsonSave", "http://ssmes.autonsi.com//DashBoardQC/UpdateStatus_API?prounit_cd=" + statusMasters.get(position).getProunit_cd() +
+                    Log.d("readJsonSave", ulrweb+"DashBoardQC/UpdateStatus_API?prounit_cd=" + statusMasters.get(position).getProunit_cd() +
                             "&process_sts_cd=" +
                             StatusListid.get(vitrispchon));
                     dialog.dismiss();
@@ -302,8 +305,8 @@ public class StatusFragment extends Fragment implements SearchView.OnQueryTextLi
             }
         });
 
-        new getDataSpiner().execute("http://ssmes.autonsi.com//DashBoardQC/Getstatus_API");
-        Log.d("dataSpinner", "http://ssmes.autonsi.com//DashBoardQC/Getstatus_API");
+        new getDataSpiner().execute(ulrweb+"DashBoardQC/Getstatus_API");
+        Log.d("dataSpinner", ulrweb+"DashBoardQC/Getstatus_API");
         dialog.show();
     }
 

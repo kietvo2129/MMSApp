@@ -2,7 +2,9 @@ package com.licheedev.serialtool.PQC;
 
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.AsyncTask;
@@ -33,6 +35,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.OQC.OQCFragment;
 import com.licheedev.serialtool.QC_check.PQC;
 import com.licheedev.serialtool.QC_check.QcCheckAdapter;
@@ -74,7 +77,7 @@ public class PQCFragment extends Fragment {
     private ArrayList<QcCheckItem> qcitem;
     private QcCheckAdapter adaptorCheck;
     private ListView listViewCheck;
-
+    String ulrweb = DMActivity.ulrweb;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_pqc, container, false);
@@ -91,7 +94,7 @@ public class PQCFragment extends Fragment {
         spinnerDate = root.findViewById(R.id.spinner_date);
         listViewCheck = root.findViewById(R.id.recycler_view_qc_check);
 
-        String UrlgetInput_mpo_no = "http://ssmes.autonsi.com//product/getDatainput_PQC?";
+        String UrlgetInput_mpo_no = ulrweb+"product/getDatainput_PQC?";
         Log.d("UrlgetInput_mpo_no", UrlgetInput_mpo_no);
         new docJSON_inputWO().execute(UrlgetInput_mpo_no);
 
@@ -164,8 +167,8 @@ public class PQCFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 mpono = itemWO.get(position);
-                new docJSON_inputProcess().execute("http://ssmes.autonsi.com//product/getDatainput_PQC?fo_no=" + mpono);
-                Log.d("docJSON_inputProcess", "http://ssmes.autonsi.com//product/getDatainput_PQC?fo_no=" + mpono);
+                new docJSON_inputProcess().execute(ulrweb+"product/getDatainput_PQC?fo_no=" + mpono);
+                Log.d("docJSON_inputProcess", ulrweb+"product/getDatainput_PQC?fo_no=" + mpono);
             }
 
             @Override
@@ -204,8 +207,8 @@ public class PQCFragment extends Fragment {
                     tvOkeQty.setText("");
                     qcitem = new ArrayList<>();
                     buildListView();
-                    new docJSON_inputdate().execute("http://ssmes.autonsi.com//product/getDatainput_PQC?fo_no=" + mpono + "&process=" + "");
-                    Log.d("docJSON_inputdate", "http://ssmes.autonsi.com//product/getDatainput_PQC?fo_no=" + mpono + "&process=" + "");
+                    new docJSON_inputdate().execute(ulrweb+"product/getDatainput_PQC?fo_no=" + mpono + "&process=" + "");
+                    Log.d("docJSON_inputdate", ulrweb+"product/getDatainput_PQC?fo_no=" + mpono + "&process=" + "");
                 } else {
                     JSONArray jsonArray = object.getJSONArray("result");
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -238,8 +241,8 @@ public class PQCFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Process = itemspinnerProcess.get(position);
-                new docJSON_inputdate().execute("http://ssmes.autonsi.com//product/getDatainput_PQC?fo_no=" + mpono + "&process=" + Process);
-                Log.d("docJSON_inputdate", "http://ssmes.autonsi.com//product/getDatainput_PQC?fo_no=" + mpono + "&process=" + Process);
+                new docJSON_inputdate().execute(ulrweb+"product/getDatainput_PQC?fo_no=" + mpono + "&process=" + Process);
+                Log.d("docJSON_inputdate", ulrweb+"product/getDatainput_PQC?fo_no=" + mpono + "&process=" + Process);
             }
 
             @Override
@@ -271,8 +274,8 @@ public class PQCFragment extends Fragment {
                     tv_QCCode.setText("");
                     tvCheckQty.setText("");
                     tvOkeQty.setText("");
-                    new docJSON_inputdata().execute("http://ssmes.autonsi.com//product/GetListDay_PQC?fo_no=" + mpono + "&process=" + Process + "&work_ymd=" + "");
-                    Log.d("docJSON_inputdata", "http://ssmes.autonsi.com//product/GetListDay_PQC?fo_no=" + mpono + "&process=" + Process + "&work_ymd=" + "");
+                    new docJSON_inputdata().execute(ulrweb+"product/GetListDay_PQC?fo_no=" + mpono + "&process=" + Process + "&work_ymd=" + "");
+                    Log.d("docJSON_inputdata", ulrweb+"product/GetListDay_PQC?fo_no=" + mpono + "&process=" + Process + "&work_ymd=" + "");
                 } else {
                     JSONArray jsonArray = object.getJSONArray("result");
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -305,8 +308,8 @@ public class PQCFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 date = itemspinnerDate.get(position);
 
-                new docJSON_inputdata().execute("http://ssmes.autonsi.com//product/GetListDay_PQC?fo_no=" + mpono + "&process=" + Process + "&work_ymd=" + date);
-                Log.d("docJSON_inputdata", "http://ssmes.autonsi.com//product/GetListDay_PQC?fo_no=" + mpono + "&process=" + Process + "&work_ymd=" + date);
+                new docJSON_inputdata().execute(ulrweb+"product/GetListDay_PQC?fo_no=" + mpono + "&process=" + Process + "&work_ymd=" + date);
+                Log.d("docJSON_inputdata", ulrweb+"product/GetListDay_PQC?fo_no=" + mpono + "&process=" + Process + "&work_ymd=" + date);
             }
 
             @Override
@@ -335,7 +338,7 @@ public class PQCFragment extends Fragment {
                 ///data table
                 if (object.getString("result").equals("[]") || object.getString("result").equals("false")) {
                     Toast.makeText(getContext(), "Data incorrect....", Toast.LENGTH_SHORT).show();
-                    String url2 = "http://ssmes.autonsi.com//product/GetDataFaclineQc?item_vcd=" + "" + "&olddno=" + olddno;
+                    String url2 = ulrweb+"product/GetDataFaclineQc?item_vcd=" + "" + "&olddno=" + olddno;
                     Log.d("PQC_getData", url2);
                     new LoadQcList().execute(url2);
                     return;
@@ -399,7 +402,7 @@ public class PQCFragment extends Fragment {
 
     private void LoadQcListAgain() {
         if (!Ma_QC_Code.equals("null")) {
-            String url2 = "http://ssmes.autonsi.com//product/GetDataFaclineQc?item_vcd=" + Ma_QC_Code + "&olddno=" + olddno;
+            String url2 = ulrweb+"product/GetDataFaclineQc?item_vcd=" + Ma_QC_Code + "&olddno=" + olddno;
             Log.d("PQC_getData", url2);
             new LoadQcList().execute(url2);
         }else {
@@ -506,7 +509,7 @@ public class PQCFragment extends Fragment {
 
         qcDetailItem = new ArrayList<>();
 
-        String url = "http://ssmes.autonsi.com//product/GetDataFaclineQc_detail?fq_no=" + qcitem.get(position).getMq_no();
+        String url = ulrweb+"product/GetDataFaclineQc_detail?fq_no=" + qcitem.get(position).getMq_no();
 
 
         new LoadQcDetail().execute(url);

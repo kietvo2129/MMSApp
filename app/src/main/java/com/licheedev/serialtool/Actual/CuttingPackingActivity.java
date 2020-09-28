@@ -2,6 +2,7 @@ package com.licheedev.serialtool.Actual;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.Product.LotProductMappingActivity;
 import com.licheedev.serialtool.Product.ProductMaster;
 import com.licheedev.serialtool.Product.ProductMasterAdaptor;
@@ -42,7 +44,7 @@ public class CuttingPackingActivity extends AppCompatActivity {
     ArrayList<CuttingPackingMaster> cuttingPackingMasterArrayList;
     TextView tv_lotCode, tv_bobbinCode;
 
-
+String ulrweb = DMActivity.ulrweb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -264,11 +266,11 @@ public class CuttingPackingActivity extends AppCompatActivity {
 
                 } else {
                     dialog.dismiss();
-                    new setDataCuttingPacking().execute("http://ssmes.autonsi.com//ActualWO/Gopcacmalaichodu_api?mt_lot=" +
+                    new setDataCuttingPacking().execute(ulrweb+"ActualWO/Gopcacmalaichodu_api?mt_lot=" +
                             LotProductMappingActivity.LotCode +
                             "&soluong=" +
                             numinput[0]+"&all_id="+finalIdchon.substring(0, finalIdchon.length() - 1));
-                    Log.d("setDataCuttingPacking", "http://ssmes.autonsi.com//ActualWO/Gopcacmalaichodu_api?mt_lot=" +
+                    Log.d("setDataCuttingPacking", ulrweb+"ActualWO/Gopcacmalaichodu_api?mt_lot=" +
                             LotProductMappingActivity.LotCode +
                             "&soluong=" +
                             numinput[0] + "&all_id=" + finalIdchon.substring(0, finalIdchon.length() - 1));
@@ -312,10 +314,10 @@ public class CuttingPackingActivity extends AppCompatActivity {
 
     private void loadData() {
 
-        new getDataCuttingPacking().execute("http://ssmes.autonsi.com//ActualWO/searchcuttingpacking?style_no=" +
+        new getDataCuttingPacking().execute(ulrweb+"ActualWO/searchcuttingpacking?style_no=" +
                 ActualFragment.Productcode +
                 "&_search=false&nd=1598501047805&rows=50&page=1&sidx=&sord=asc");
-        Log.d("getDataCuttingPacking", "http://ssmes.autonsi.com//ActualWO/searchcuttingpacking?style_no=" +
+        Log.d("getDataCuttingPacking", ulrweb+"ActualWO/searchcuttingpacking?style_no=" +
                 ActualFragment.Productcode +
                 "&_search=false&nd=1598501047805&rows=50&page=1&sidx=&sord=asc");
     }

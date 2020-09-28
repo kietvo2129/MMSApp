@@ -2,6 +2,7 @@ package com.licheedev.serialtool.TotalInspection.TotalInspectionDetail;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
@@ -20,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.PQC.PupopInspectionDetailAdapter;
 import com.licheedev.serialtool.QC_check.PQC;
 import com.licheedev.serialtool.R;
@@ -53,7 +55,7 @@ public class TotalInspectionDetailActivity extends AppCompatActivity {
     int vitri = -1;
 
     public static String PLno, dateno, idPLno, Group_qty;
-
+String ulrweb = DMActivity.ulrweb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +69,6 @@ public class TotalInspectionDetailActivity extends AppCompatActivity {
         btn_Visual = findViewById(R.id.btn_Visual);
         btn_Thickness = findViewById(R.id.btn_Thickness);
 
-   //     new ReadJSON().execute("http://ssmes.autonsi.com//TotalInspection/get_PP_detail?fo_no=" + WOchon);
-    //    Log.d("Total inspection detail", "http://ssmes.autonsi.com//TotalInspection/get_PP_detail?fo_no=" + WOchon);
         lvds.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -119,11 +119,11 @@ public class TotalInspectionDetailActivity extends AppCompatActivity {
     public void finish_click(View view) {
         int vitri = lvds.getPositionForView(view);
         if (!totalInspectionDetailMasterArrayList.get(vitri).getSts().equals("Finish")) {
-            new ReadJSONfinish().execute("http://ssmes.autonsi.com//TotalInspection/update_btn_finish?pno=" +
+            new ReadJSONfinish().execute(ulrweb+"TotalInspection/update_btn_finish?pno=" +
                     totalInspectionDetailMasterArrayList.get(vitri).getPno() +
                     "&insp_yn=" +
                     "Y");
-            Log.d("Totalinspectionfinnish", "http://ssmes.autonsi.com//TotalInspection/update_btn_finish?pno=" +
+            Log.d("Totalinspectionfinnish", ulrweb+"TotalInspection/update_btn_finish?pno=" +
                     totalInspectionDetailMasterArrayList.get(vitri).getPno() +
                     "&insp_yn=" +
                     "Y");
@@ -212,13 +212,12 @@ public class TotalInspectionDetailActivity extends AppCompatActivity {
                     input.setFocusable(true);
                     return;
                 } else {
-                    // http://ssmes.autonsi.com//TotalInspection/update_btn_save?pno=1&gr_qty=10
 
-                    new ReadJSONfinish().execute("http://ssmes.autonsi.com//TotalInspection/update_btn_save?pno=" +
+                    new ReadJSONfinish().execute(ulrweb+"TotalInspection/update_btn_save?pno=" +
                             totalInspectionDetailMasterArrayList.get(vitri).getPno() +
                             "&gr_qty=" +
                             bbCode);
-                    Log.d("Totalinspectionsave", "http://ssmes.autonsi.com//TotalInspection/update_btn_save?pno=" +
+                    Log.d("Totalinspectionsave", ulrweb+"TotalInspection/update_btn_save?pno=" +
                             totalInspectionDetailMasterArrayList.get(vitri).getPno() +
                             "&gr_qty=" +
                             bbCode);
@@ -236,37 +235,6 @@ public class TotalInspectionDetailActivity extends AppCompatActivity {
             }
         });
 
-//        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                String bbCode = input.getText().toString();
-//
-//                if (bbCode.length() == 0) {
-//                    Toast.makeText(TotalInspectionDetailActivity.this, "Please input data!", Toast.LENGTH_SHORT).show();
-//                } else if (Integer.parseInt(bbCode) > finalMaximum) {
-//                    AlertNotExist ("Maximum = " + finalMaximum);
-//                } else {
-//                    // http://ssmes.autonsi.com//TotalInspection/update_btn_save?pno=1&gr_qty=10
-//
-//                    new ReadJSONfinish().execute("http://ssmes.autonsi.com//TotalInspection/update_btn_save?pno=" +
-//                            totalInspectionDetailMasterArrayList.get(vitri).getPno() +
-//                            "&gr_qty=" +
-//                            bbCode);
-//                    Log.d("Totalinspectionsave", "http://ssmes.autonsi.com//TotalInspection/update_btn_save?pno=" +
-//                            totalInspectionDetailMasterArrayList.get(vitri).getPno() +
-//                            "&gr_qty=" +
-//                            bbCode);
-//
-//                }
-//            }
-//        });
-
-//        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.cancel();
-//            }
-//        });
         alertDialog.show();
 
 
@@ -302,8 +270,8 @@ public class TotalInspectionDetailActivity extends AppCompatActivity {
                 String Trave = object.getString("result");
                 if (Trave.equals("true")) {
                     //Toast.makeText(TotalInspectionDetailActivity.this, "OKE", Toast.LENGTH_SHORT).show();
-                    new ReadJSON().execute("http://ssmes.autonsi.com//TotalInspection/get_PP_detail?fo_no=" + WOchon);
-                    Log.d("Total inspection detail", "http://ssmes.autonsi.com//TotalInspection/get_PP_detail?fo_no=" + WOchon);
+                    new ReadJSON().execute(ulrweb+"TotalInspection/get_PP_detail?fo_no=" + WOchon);
+                    Log.d("Total inspection detail", ulrweb+"TotalInspection/get_PP_detail?fo_no=" + WOchon);
                 } else {
                     Toast.makeText(TotalInspectionDetailActivity.this, "Sever disconnected", Toast.LENGTH_SHORT).show();
                 }
@@ -399,8 +367,8 @@ public class TotalInspectionDetailActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        new ReadJSON().execute("http://ssmes.autonsi.com//TotalInspection/get_PP_detail?fo_no=" + WOchon);
-        Log.d("Total inspection detail", "http://ssmes.autonsi.com//TotalInspection/get_PP_detail?fo_no=" + WOchon);
+        new ReadJSON().execute(ulrweb+"TotalInspection/get_PP_detail?fo_no=" + WOchon);
+        Log.d("Total inspection detail", ulrweb+"TotalInspection/get_PP_detail?fo_no=" + WOchon);
     }
 
 }

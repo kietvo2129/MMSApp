@@ -3,6 +3,7 @@ package com.licheedev.serialtool.QC_check;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,7 @@ import com.licheedev.serialtool.Actual.FragmentKeyin;
 import com.licheedev.serialtool.Actual.LotCompositeActivity;
 import com.licheedev.serialtool.Actual.LotProductActivity;
 import com.licheedev.serialtool.Actual.countrydanhsach;
+import com.licheedev.serialtool.DMActivity;
 import com.licheedev.serialtool.R;
 
 import org.json.JSONArray;
@@ -72,7 +74,7 @@ public class OQC extends AppCompatActivity {
     TextView tv_qcheck_defectqty;
 
     AlertDialog alertDialogCheck;
-
+String ulrweb = DMActivity.ulrweb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +102,7 @@ public class OQC extends AppCompatActivity {
     }
 
     private void LoadQcListAgain() {
-        String url2 = "http://ssmes.autonsi.com//product/GetDataW_Product_Qc?item_vcd=" + Ma_QC_Code + "&olddno=" + olddnochon;
+        String url2 =ulrweb+ "product/GetDataW_Product_Qc?item_vcd=" + Ma_QC_Code + "&olddno=" + olddnochon;
         Log.d("PQC_getData", url2);
         new LoadQcList().execute(url2);
 
@@ -233,7 +235,7 @@ public class OQC extends AppCompatActivity {
                     ITEM_MQ_HNO_S = ITEM_MQ_HNO_S.substring(1, ITEM_MQ_HNO_S.length());
                     ITEM_CHECK_QTY_S = ITEM_CHECK_QTY_S.substring(1, ITEM_CHECK_QTY_S.length());
 
-                    String url = "http://ssmes.autonsi.com//product/Update_w_product_qc_value?pqno=" + ITEM_MQNO +
+                    String url = ulrweb+ "product/Update_w_product_qc_value?pqno=" + ITEM_MQNO +
                             "&pqhno=" + ITEM_MQ_HNO_S + "&check_qty=" + ITEM_CHECK_QTY_S;
 
                     //Toast.makeText(getActivity(), url, Toast.LENGTH_SHORT).show();
@@ -263,7 +265,7 @@ public class OQC extends AppCompatActivity {
         recyclerViewDetail = dialogView.findViewById(R.id.recycler_view_qc_check_qc_detail);
         qcDetailItem = new ArrayList<>();
 
-        String url = "http://ssmes.autonsi.com//product/GetDataW_Product_Qc_detail?pq_no=" + qcitem.get(position).getMq_no();
+        String url = ulrweb+ "product/GetDataW_Product_Qc_detail?pq_no=" + qcitem.get(position).getMq_no();
 
 
         new LoadQcDetail().execute(url);
@@ -627,7 +629,7 @@ public class OQC extends AppCompatActivity {
 
                         numActual = Integer.parseInt(numActual) - Integer.parseInt(tv_qcheck_defectqty.getText().toString())+"";
 
-                        String url = "http://ssmes.autonsi.com//product" /*HostSV*/ +
+                        String url = ulrweb+ "product" /*HostSV*/ +
                                 "/Insert_W_Product_Qc?olddno=" + olddnochon +
                                 "&item_vcd=" + Ma_QC_Code +
                                 "&check_qty=" + tv_qcheck_checkqty.getText().toString().trim() +
@@ -665,7 +667,7 @@ public class OQC extends AppCompatActivity {
                             ITEM_CHECK_ERR_S = ITEM_CHECK_ERR_S.substring(1, ITEM_CHECK_ERR_S.length());
 
 
-                            String url = "http://ssmes.autonsi.com//product" /*HostSV*/ +
+                            String url = ulrweb+ "product" /*HostSV*/ +
                                     "/Insert_W_Product_Qc?olddno=" + olddnochon +
                                     "&item_vcd=" + Ma_QC_Code +
                                     "&check_qty=" + tv_qcheck_checkqty.getText().toString().trim() +
@@ -696,7 +698,7 @@ public class OQC extends AppCompatActivity {
             }
         });
 
-        String url = "http://ssmes.autonsi.com//product/Popup_Qc_Check?item_vcd=" + Ma_QC_Code;
+        String url = ulrweb+ "product/Popup_Qc_Check?item_vcd=" + Ma_QC_Code;
 
         Log.d("QC_menu_Check", url);
         //LoadCheckQc(url);
